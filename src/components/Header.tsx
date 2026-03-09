@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FiMenu, FiX, FiPhone, FiMail } from 'react-icons/fi';
 import { FaPlane, FaHotel, FaCar, FaTaxi, FaUmbrellaBeach, FaMapMarkedAlt } from 'react-icons/fa';
 
@@ -47,19 +48,15 @@ const Header = () => {
         <nav className="container-custom">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3 group">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl transform rotate-6 group-hover:rotate-12 transition-transform"></div>
-                <div className="relative bg-gradient-to-br from-blue-500 to-blue-700 p-3 rounded-xl shadow-lg">
-                  <FaPlane className="text-white text-2xl transform -rotate-45" />
-                </div>
-              </div>
-              <div>
-                <span className="text-3xl font-black bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-                  GoTraveled
-                </span>
-                <p className="text-xs text-gray-500 -mt-1">Your Travel Companion</p>
-              </div>
+            <Link href="/" className="flex items-center group">
+              <Image 
+                src="/logo.png" 
+                alt="GoTraveled - Your Travel Companion" 
+                width={200} 
+                height={60}
+                className="h-14 w-auto object-contain transition-transform group-hover:scale-105"
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}
