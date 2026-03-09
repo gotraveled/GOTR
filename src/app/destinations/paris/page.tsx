@@ -214,8 +214,89 @@ export default function ParisPage() {
         </div>
       </section>
 
-      {/* Travel Tips */}
+      {/* Neighborhoods */}
+      <section className="py-16 bg-white">
+        <div className="container-custom">
+          <h2 className="section-title">Best Paris Neighborhoods to Explore</h2>
+          <div className="grid md:grid-cols-3 gap-8 mt-8">
+            <div className="bg-gray-50 p-6 rounded-xl">
+              <h3 className="text-xl font-bold mb-3 text-primary">Le Marais</h3>
+              <p className="text-gray-700">
+                Historic Jewish quarter with trendy boutiques, art galleries, and amazing 
+                falafel. Perfect for wandering narrow medieval streets and discovering 
+                hidden courtyards.
+              </p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-xl">
+              <h3 className="text-xl font-bold mb-3 text-primary">Saint-Germain-des-Prés</h3>
+              <p className="text-gray-700">
+                Intellectual heart of Paris with famous cafés like Café de Flore and Les Deux 
+                Magots. Browse bookshops, antique stores, and enjoy upscale shopping.
+              </p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-xl">
+              <h3 className="text-xl font-bold mb-3 text-primary">Latin Quarter</h3>
+              <p className="text-gray-700">
+                Student district near the Sorbonne with lively atmosphere, budget-friendly 
+                restaurants, and iconic sights like the Panthéon and Luxembourg Gardens.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Day Trips */}
       <section className="py-16 bg-gray-50">
+        <div className="container-custom">
+          <h2 className="section-title">Best Day Trips from Paris</h2>
+          <div className="grid md:grid-cols-2 gap-8 mt-8">
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h3 className="text-xl font-bold mb-3 text-primary">Palace of Versailles</h3>
+              <p className="text-gray-700 mb-3">
+                The opulent palace of Louis XIV features the famous Hall of Mirrors, 
+                magnificent gardens, and the Grand Trianon. Plan a full day to explore 
+                this UNESCO World Heritage site.
+              </p>
+              <p className="text-sm text-gray-600">
+                <strong>Distance:</strong> 20km southwest of Paris | <strong>Time:</strong> 30-45 min by train
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h3 className="text-xl font-bold mb-3 text-primary">Giverny</h3>
+              <p className="text-gray-700 mb-3">
+                Visit Claude Monet's house and gardens where he painted his famous water 
+                lilies. The gardens are at their most beautiful from April to October.
+              </p>
+              <p className="text-sm text-gray-600">
+                <strong>Distance:</strong> 75km northwest | <strong>Time:</strong> 1 hour by train
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h3 className="text-xl font-bold mb-3 text-primary">Disneyland Paris</h3>
+              <p className="text-gray-700 mb-3">
+                Europe's most popular theme park with two parks: Disneyland Park and 
+                Walt Disney Studios. Perfect for families and Disney fans.
+              </p>
+              <p className="text-sm text-gray-600">
+                <strong>Distance:</strong> 32km east | <strong>Time:</strong> 40 min by RER train
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h3 className="text-xl font-bold mb-3 text-primary">Champagne Region</h3>
+              <p className="text-gray-700 mb-3">
+                Tour world-famous champagne houses in Reims and Épernay, visit historic 
+                cellars, and taste authentic French champagne.
+              </p>
+              <p className="text-sm text-gray-600">
+                <strong>Distance:</strong> 145km east | <strong>Time:</strong> 45 min by TGV train
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Travel Tips */}
+      <section className="py-16 bg-white">
         <div className="container-custom">
           <h2 className="section-title">Essential Paris Travel Tips</h2>
           
