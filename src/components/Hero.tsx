@@ -19,39 +19,42 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-blue-600 via-primary to-secondary text-white">
-      {/* Background Image Overlay */}
-      <div className="absolute inset-0 bg-black opacity-20"></div>
+    <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white overflow-hidden">
+      {/* Animated Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-300 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+      </div>
       
-      <div className="relative container-custom py-20 md:py-32">
+      <div className="relative container-custom py-16 md:py-24">
         {/* Hero Title */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            Find Cheap Flights, Hotels & Travel Deals Worldwide
+        <div className="text-center mb-10">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-4 leading-tight">
+            Explore the World with Confidence
           </h1>
-          <p className="text-xl md:text-2xl text-blue-100">
-            Search and compare millions of travel options to save on your next adventure
+          <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
+            Compare millions of flights, hotels & car rentals from hundreds of travel sites to find the best deal
           </p>
         </div>
 
         {/* Search Widget Container */}
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Tabs */}
-          <div className="bg-white rounded-t-xl shadow-lg">
-            <div className="flex border-b">
+          <div className="bg-white rounded-t-2xl shadow-2xl">
+            <div className="flex border-b-2 border-gray-100">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
                 return (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex-1 flex items-center justify-center space-x-2 py-4 px-6 font-semibold transition-all ${
+                    className={`flex-1 flex items-center justify-center space-x-2 py-5 px-4 font-bold text-sm md:text-base transition-all ${
                       activeTab === tab.id
-                        ? 'bg-white text-primary border-b-4 border-primary'
-                        : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                        ? 'bg-white text-blue-600 border-b-4 border-blue-600 -mb-0.5'
+                        : 'bg-gray-50 text-gray-600 hover:bg-white hover:text-blue-500'
                     }`}
                   >
-                    <Icon className="text-xl" />
+                    <Icon className="text-xl md:text-2xl" />
                     <span className="hidden sm:inline">{tab.name}</span>
                   </button>
                 );
@@ -59,35 +62,27 @@ const Hero = () => {
             </div>
 
             {/* Tab Content */}
-            <div className="bg-white rounded-b-xl p-6 md:p-8">
+            <div className="bg-white rounded-b-2xl p-8 md:p-10">
               {activeTab === 'flights' && <FlightSearchForm />}
               {activeTab === 'hotels' && <HotelSearchForm />}
               {activeTab === 'cars' && <CarSearchForm />}
               {activeTab === 'transfers' && <TransferSearchForm />}
             </div>
           </div>
-        </div>
-
-        {/* Trust Indicators */}
-        <div className="mt-12 text-center">
-          <div className="flex flex-wrap justify-center items-center gap-8 text-blue-100">
-            <div className="flex items-center space-x-2">
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <span>Trusted by millions</span>
+          
+          {/* Quick Stats */}
+          <div className="mt-8 grid grid-cols-3 gap-4 max-w-3xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+              <p className="text-2xl md:text-3xl font-bold">500+</p>
+              <p className="text-sm text-blue-100">Airlines</p>
             </div>
-            <div className="flex items-center space-x-2">
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              <span>Best price guarantee</span>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+              <p className="text-2xl md:text-3xl font-bold">1M+</p>
+              <p className="text-sm text-blue-100">Hotels</p>
             </div>
-            <div className="flex items-center space-x-2">
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-              </svg>
-              <span>Secure booking</span>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+              <p className="text-2xl md:text-3xl font-bold">5M+</p>
+              <p className="text-sm text-blue-100">Happy Travelers</p>
             </div>
           </div>
         </div>

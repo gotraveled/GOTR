@@ -5,14 +5,18 @@ import HotelWidget from '@/components/widgets/HotelWidget';
 import TaxiWidget from '@/components/widgets/TaxiWidget';
 import Newsletter from '@/components/Newsletter';
 import BlogSection from '@/components/BlogSection';
+import TrustBadges from '@/components/TrustBadges';
 
 export default function Home() {
   return (
     <div>
       <Hero />
       
+      {/* Trust Badges */}
+      <TrustBadges />
+      
       {/* Popular Destinations */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <PopularDestinations />
       </section>
 
