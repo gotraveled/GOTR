@@ -142,14 +142,22 @@ const FlightDealsWidget = () => {
             </p>
           </div>
           
-          <a
-            href={`https://www.aviasales.com/search/${deal.origin}${new Date(deal.departure_at).toISOString().split('T')[0]}${deal.destination}${new Date(deal.return_at).toISOString().split('T')[0]}1?marker=250882`}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => {
+              const params = new URLSearchParams({
+                origin: deal.origin,
+                destination: deal.destination,
+                departure: deal.departure_at,
+                return: deal.return_at,
+                passengers: '1',
+                tripType: 'roundtrip'
+              });
+              window.location.href = `/book/flights?${params.toString()}`;
+            }}
             className="block w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white text-center font-bold py-3 px-4 rounded-lg hover:shadow-lg transform hover:scale-105 transition-all"
           >
             View Deal <FaArrowRight className="inline ml-2" />
-          </a>
+          </button>
         </div>
       ))}
     </div>

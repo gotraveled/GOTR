@@ -2,10 +2,12 @@
 
 import { useState } from 'react';
 import { FaMapMarkerAlt, FaCalendar, FaUser } from 'react-icons/fa';
+import RealCityAutocomplete from '@/components/RealCityAutocomplete';
 
 const HotelWidget = () => {
   const [formData, setFormData] = useState({
     destination: '',
+    destinationId: '',
     checkIn: '',
     checkOut: '',
     adults: '2',
@@ -15,30 +17,15 @@ const HotelWidget = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Calculate number of nights
-    const checkIn = new Date(formData.checkIn);
-    const checkOut = new Date(formData.checkOut);
-    const nights = Math.ceil((checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24));
-    
-    // Build Travelpayouts hotel search URL
-    const searchUrl = new URL('https://search.hotellook.com/');
-    searchUrl.searchParams.append('marker', '250882');
-    searchUrl.searchParams.append('locale', 'en');
-    searchUrl.searchParams.append('currency', 'usd');
-    
-    if (formData.destination) {
-      searchUrl.searchParams.append('query', formData.destination);
-    }
-    if (formData.checkIn) {
-      searchUrl.searchParams.append('checkIn', formData.checkIn);
-    }
-    if (formData.checkOut) {
-      searchUrl.searchParams.append('checkOut', formData.checkOut);
-    }
-    searchUrl.searchParams.append('adults', formData.adults);
-    searchUrl.searchParams.append('children', formData.children);
-    
-    window.open(searchUrl.toString(), '_blank');
+    const params = new URLSearchParams({
+      city: formData.destination,
+      checkIn: formData.checkIn,
+      checkOut: formData.checkOut,
+      guests: formData.adults,
+      children: formData.children
+    });
+
+    window.location.href = `/book/hotels?${params.toString()}`;
   };
 
   // Get today's date for min attribute
@@ -58,20 +45,13 @@ const HotelWidget = () => {
     <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-xl">
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Destination */}
-        <div>
-          <label className="block text-sm font-bold mb-2 text-gray-700">
-            <FaMapMarkerAlt className="inline mr-2 text-blue-600" />
-            Where are you going?
-          </label>
-          <input
-            type="text"
-            placeholder="City, hotel name, or landmark"
-            value={formData.destination}
-            onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all text-gray-800 placeholder-gray-400"
-            required
-          />
-        </div>
+        <RealCityAutocomplete
+          value={formData.destination}
+          onChange={(value, id) => setFormData({ ...formData, destination: value, destinationId: id })}
+          placeholder="City, hotel name, or landmark"
+          label="Where are you going?"
+          required
+        />
 
         {/* Check-in and Check-out */}
         <div className="grid md:grid-cols-2 gap-4">

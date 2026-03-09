@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { FaPlane, FaCalendar, FaUser } from 'react-icons/fa';
-import AirportAutocomplete from '@/components/AirportAutocomplete';
+import RealAirportAutocomplete from '@/components/RealAirportAutocomplete';
 
 export default function FlightSearchForm() {
   const [formData, setFormData] = useState({
@@ -63,14 +63,14 @@ export default function FlightSearchForm() {
 
       {/* Origin & Destination */}
       <div className="grid md:grid-cols-2 gap-4">
-        <AirportAutocomplete
+        <RealAirportAutocomplete
           value={formData.origin}
           onChange={(displayValue, code) => setFormData({ ...formData, origin: displayValue, originCode: code })}
           placeholder="City or Airport"
           label="From"
           icon={FaPlane}
         />
-        <AirportAutocomplete
+        <RealAirportAutocomplete
           value={formData.destination}
           onChange={(displayValue, code) => setFormData({ ...formData, destination: displayValue, destinationCode: code })}
           placeholder="City or Airport"

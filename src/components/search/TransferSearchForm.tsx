@@ -2,11 +2,14 @@
 
 import { useState } from 'react';
 import { FaMapMarkerAlt, FaCalendar } from 'react-icons/fa';
+import RealCityAutocomplete from '@/components/RealCityAutocomplete';
 
 export default function TransferSearchForm() {
   const [formData, setFormData] = useState({
     from: '',
+    fromId: '',
     to: '',
+    toId: '',
     date: ''
   });
 
@@ -19,41 +22,27 @@ export default function TransferSearchForm() {
       date: formData.date,
     });
 
-    window.location.href = `https://book.gotraveled.com/transfers?${params.toString()}`;
+    window.location.href = `/book/transfers?${params.toString()}`;
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {/* From & To */}
       <div className="grid md:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-semibold mb-2 text-gray-700">
-            <FaMapMarkerAlt className="inline mr-2 text-primary" />
-            From (Airport/Hotel)
-          </label>
-          <input
-            type="text"
-            placeholder="Airport or Hotel"
-            value={formData.from}
-            onChange={(e) => setFormData({ ...formData, from: e.target.value })}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-gray-900 bg-white"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-semibold mb-2 text-gray-700">
-            <FaMapMarkerAlt className="inline mr-2 text-primary" />
-            To (Hotel/Address)
-          </label>
-          <input
-            type="text"
-            placeholder="Hotel or Address"
-            value={formData.to}
-            onChange={(e) => setFormData({ ...formData, to: e.target.value })}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-gray-900 bg-white"
-            required
-          />
-        </div>
+        <RealCityAutocomplete
+          value={formData.from}
+          onChange={(value, id) => setFormData({ ...formData, from: value, fromId: id })}
+          placeholder="Airport or Hotel"
+          label="From (Airport/Hotel)"
+          required
+        />
+        <RealCityAutocomplete
+          value={formData.to}
+          onChange={(value, id) => setFormData({ ...formData, to: value, toId: id })}
+          placeholder="Hotel or Address"
+          label="To (Hotel/Address)"
+          required
+        />
       </div>
 
       {/* Date & Time */}

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import FlightSearchForm from '@/components/search/FlightSearchForm';
 import FlightDealsWidget from '@/components/widgets/FlightDealsWidget';
+import PopularRoutes from '@/components/PopularRoutes';
 
 export const metadata: Metadata = {
   title: 'Cheap Flights - Compare & Book Airline Tickets | GoTraveled',
@@ -10,15 +11,6 @@ export const metadata: Metadata = {
 };
 
 export default function FlightsPage() {
-  const popularRoutes = [
-    { from: 'New York', to: 'London', price: '$299' },
-    { from: 'Los Angeles', to: 'Tokyo', price: '$450' },
-    { from: 'Mumbai', to: 'Dubai', price: '$180' },
-    { from: 'Paris', to: 'Barcelona', price: '$89' },
-    { from: 'Sydney', to: 'Bali', price: '$210' },
-    { from: 'Singapore', to: 'Bangkok', price: '$75' },
-  ];
-
   const airlines = [
     'Emirates', 'Qatar Airways', 'Singapore Airlines', 
     'Lufthansa', 'British Airways', 'Air France'
@@ -56,24 +48,7 @@ export default function FlightsPage() {
             Explore our most searched flight destinations
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {popularRoutes.map((route, index) => (
-              <div key={index} className="card p-6">
-                <div className="flex justify-between items-center mb-4">
-                  <div>
-                    <p className="text-lg font-semibold text-gray-800">{route.from}</p>
-                    <p className="text-sm text-gray-500">to</p>
-                    <p className="text-lg font-semibold text-gray-800">{route.to}</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-sm text-gray-500">From</p>
-                    <p className="text-2xl font-bold text-primary">{route.price}</p>
-                  </div>
-                </div>
-                <button className="btn-primary w-full">Search Flights</button>
-              </div>
-            ))}
-          </div>
+          <PopularRoutes />
         </div>
       </section>
 
