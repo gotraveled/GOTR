@@ -3,10 +3,10 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { FaPlane, FaHotel, FaCar, FaTaxi } from 'react-icons/fa';
-import FlightSearchWidget from './widgets/FlightSearchWidget';
-import HotelWidget from './widgets/HotelWidget';
-import CarWidget from './widgets/CarWidget';
-import TaxiWidget from './widgets/TaxiWidget';
+import FlightSearchForm from './search/FlightSearchForm';
+import HotelSearchForm from './search/HotelSearchForm';
+import CarSearchForm from './search/CarSearchForm';
+import TransferSearchForm from './search/TransferSearchForm';
 
 const Hero = () => {
   const [activeTab, setActiveTab] = useState('flights');
@@ -60,10 +60,10 @@ const Hero = () => {
 
             {/* Tab Content */}
             <div className="bg-white rounded-b-xl p-6 md:p-8">
-              {activeTab === 'flights' && <FlightSearchWidget />}
-              {activeTab === 'hotels' && <HotelWidget />}
-              {activeTab === 'cars' && <CarWidget />}
-              {activeTab === 'transfers' && <TaxiWidget />}
+              {activeTab === 'flights' && <FlightSearchForm />}
+              {activeTab === 'hotels' && <HotelSearchForm />}
+              {activeTab === 'cars' && <CarSearchForm />}
+              {activeTab === 'transfers' && <TransferSearchForm />}
             </div>
           </div>
         </div>
