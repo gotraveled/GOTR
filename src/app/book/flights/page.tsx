@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import { FaPlane, FaArrowLeft } from 'react-icons/fa';
 
 function FlightSearchContent() {
   const searchParams = useSearchParams();
@@ -15,37 +17,79 @@ function FlightSearchContent() {
     const returnDate = searchParams.get('return') || '';
     const passengers = searchParams.get('passengers') || '1';
 
-    // Build Travelpayouts white-label URL
-    const whitelabelUrl = `https://search.jetradar.com/search?origin_iata=${origin}&destination_iata=${destination}&depart_date=${departure}&return_date=${returnDate}&adults=${passengers}&marker=250882&with_request=true`;
+    // Build Aviasales search URL with affiliate marker
+    const aviasalesUrl = `https://www.aviasales.com/search/${origin}${departure}${destination}${returnDate}${passengers}?marker=250882`;
 
-    // Create iframe for white-label
+    // Create iframe for Aviasales white-label integration
     if (containerRef.current) {
-      const iframe = document.createElement('iframe');
-      iframe.src = whitelabelUrl;
-      iframe.style.width = '100%';
-      iframe.style.minHeight = '100vh';
-      iframe.style.border = 'none';
-      iframe.allow = 'geolocation';
-      
       containerRef.current.innerHTML = '';
+      
+      const iframe = document.createElement('iframe');
+      iframe.src = aviasalesUrl;
+      iframe.style.width = '100%';
+      iframe.style.height = '1200px';
+      iframe.style.border = 'none';
+      iframe.style.borderRadius = '0.75rem';
+      iframe.allow = 'geolocation';
+      iframe.setAttribute('loading', 'eager');
+      
       containerRef.current.appendChild(iframe);
     }
   }, [searchParams]);
 
+  const origin = searchParams.get('origin') || '';
+  const destination = searchParams.get('destination') || '';
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container-custom py-8">
-        <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-primary to-secondary text-white p-6">
-            <h1 className="text-3xl font-bold">Search Flights</h1>
-            <p className="text-blue-100 mt-2">Find the best flight deals worldwide</p>
-          </div>
-          
-          <div ref={containerRef} className="min-h-[600px] flex items-center justify-center">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-              <p className="text-gray-600">Loading flight search...</p>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+      {/* Header */}
+      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-6 shadow-lg">
+        <div className="container-custom">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <Link href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+                <FaArrowLeft />
+                <span>Back to Home</span>
+              </Link>
             </div>
+            <div className="flex items-center space-x-3">
+              <FaPlane className="text-2xl" />
+              <div>
+                <h1 className="text-2xl font-bold">Flight Search Results</h1>
+                {origin && destination && (
+                  <p className="text-blue-100 text-sm">{origin} → {destination}</p>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Search Results */}
+      <div className="container-custom py-8">
+        <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+          <div ref={containerRef} className="min-h-[800px] flex items-center justify-center bg-gray-50">
+            <div className="text-center py-12">
+              <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600 mx-auto mb-6"></div>
+              <p className="text-gray-700 font-semibold text-lg">Searching flights...</p>
+              <p className="text-gray-500 text-sm mt-2">Finding the best deals for you</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Trust Indicators */}
+        <div className="mt-8 grid grid-cols-3 gap-4 text-center">
+          <div className="bg-white p-4 rounded-lg shadow">
+            <p className="text-2xl font-bold text-blue-600">500+</p>
+            <p className="text-sm text-gray-600">Airlines</p>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow">
+            <p className="text-2xl font-bold text-blue-600">Best Price</p>
+            <p className="text-sm text-gray-600">Guaranteed</p>
+          </div>
+          <div className="bg-white p-4 rounded-lg shadow">
+            <p className="text-2xl font-bold text-blue-600">24/7</p>
+            <p className="text-sm text-gray-600">Support</p>
           </div>
         </div>
       </div>

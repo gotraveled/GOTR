@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import FlightSearchWidget from '@/components/widgets/FlightSearchWidget';
+import FlightSearchForm from '@/components/search/FlightSearchForm';
 import FlightDealsWidget from '@/components/widgets/FlightDealsWidget';
 
 export const metadata: Metadata = {
@@ -41,8 +41,9 @@ export default function FlightsPage() {
       {/* Flight Search Widget */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom">
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <FlightSearchWidget />
+          <h2 className="section-title text-center mb-8">Search Flights</h2>
+          <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl p-8">
+            <FlightSearchForm />
           </div>
         </div>
       </section>

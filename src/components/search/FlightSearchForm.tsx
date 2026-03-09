@@ -69,7 +69,7 @@ export default function FlightSearchForm() {
             placeholder="City or Airport"
             value={formData.origin}
             onChange={(e) => setFormData({ ...formData, origin: e.target.value })}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-gray-900 bg-white"
             required
           />
         </div>
@@ -83,7 +83,7 @@ export default function FlightSearchForm() {
             placeholder="City or Airport"
             value={formData.destination}
             onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-gray-900 bg-white"
             required
           />
         </div>
@@ -100,7 +100,7 @@ export default function FlightSearchForm() {
             type="date"
             value={formData.departure}
             onChange={(e) => setFormData({ ...formData, departure: e.target.value })}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-gray-900 bg-white"
             required
           />
         </div>
@@ -114,7 +114,7 @@ export default function FlightSearchForm() {
               type="date"
               value={formData.return}
               onChange={(e) => setFormData({ ...formData, return: e.target.value })}
-              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-gray-900 bg-white"
               required
             />
           </div>
@@ -127,7 +127,7 @@ export default function FlightSearchForm() {
           <select
             value={formData.passengers}
             onChange={(e) => setFormData({ ...formData, passengers: e.target.value })}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-gray-900 bg-white"
           >
             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(num => (
               <option key={num} value={num}>{num} {num === 1 ? 'Passenger' : 'Passengers'}</option>

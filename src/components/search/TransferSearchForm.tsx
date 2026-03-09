@@ -36,7 +36,7 @@ export default function TransferSearchForm() {
             placeholder="Airport or Hotel"
             value={formData.from}
             onChange={(e) => setFormData({ ...formData, from: e.target.value })}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-gray-900 bg-white"
             required
           />
         </div>
@@ -50,7 +50,7 @@ export default function TransferSearchForm() {
             placeholder="Hotel or Address"
             value={formData.to}
             onChange={(e) => setFormData({ ...formData, to: e.target.value })}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-gray-900 bg-white"
             required
           />
         </div>
@@ -66,7 +66,7 @@ export default function TransferSearchForm() {
           type="datetime-local"
           value={formData.date}
           onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-gray-900 bg-white"
           required
         />
       </div>

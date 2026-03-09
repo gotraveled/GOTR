@@ -37,7 +37,7 @@ export default function HotelSearchForm() {
           placeholder="City, hotel, or landmark"
           value={formData.city}
           onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-gray-900 bg-white"
           required
         />
       </div>
@@ -53,7 +53,7 @@ export default function HotelSearchForm() {
             type="date"
             value={formData.checkIn}
             onChange={(e) => setFormData({ ...formData, checkIn: e.target.value })}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-gray-900 bg-white"
             required
           />
         </div>
@@ -66,7 +66,7 @@ export default function HotelSearchForm() {
             type="date"
             value={formData.checkOut}
             onChange={(e) => setFormData({ ...formData, checkOut: e.target.value })}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-gray-900 bg-white"
             required
           />
         </div>
@@ -78,7 +78,7 @@ export default function HotelSearchForm() {
           <select
             value={formData.guests}
             onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-gray-900 bg-white"
           >
             {[1, 2, 3, 4, 5, 6, 7, 8].map(num => (
               <option key={num} value={num}>{num} {num === 1 ? 'Guest' : 'Guests'}</option>

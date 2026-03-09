@@ -95,18 +95,18 @@ export default function ToursPage() {
           </p>
           
           {/* Search Bar */}
-          <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-6">
+          <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-2xl p-6">
             <div className="grid md:grid-cols-3 gap-4">
               <input
                 type="text"
                 placeholder="Where do you want to go?"
-                className="input-field text-gray-900"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all text-gray-900 bg-white"
               />
               <input
                 type="date"
-                className="input-field text-gray-900"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all text-gray-900 bg-white"
               />
-              <button className="btn-primary">Search Tours</button>
+              <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold py-3 px-6 rounded-lg hover:shadow-xl transform hover:scale-105 transition-all">Search Tours</button>
             </div>
           </div>
         </div>
@@ -122,7 +122,7 @@ export default function ToursPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {categories.map((category) => (
-              <div key={category.name} className="card group cursor-pointer">
+              <div key={category.name} className="bg-white rounded-xl shadow-lg overflow-hidden group cursor-pointer hover:shadow-2xl transition-all">
                 <div 
                   className="h-48 bg-cover bg-center relative overflow-hidden"
                   style={{ backgroundImage: `url(${category.image})` }}
@@ -133,7 +133,7 @@ export default function ToursPage() {
                   </div>
                 </div>
                 <div className="p-6 text-center">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold mb-2 text-gray-800 group-hover:text-blue-600 transition-colors">
                     {category.name}
                   </h3>
                   <p className="text-gray-600">{category.description}</p>
@@ -154,7 +154,7 @@ export default function ToursPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {popularTours.map((tour) => (
-              <div key={tour.title} className="card group">
+              <div key={tour.title} className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all">
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src={tour.image}
@@ -165,7 +165,7 @@ export default function ToursPage() {
                 </div>
                 <div className="p-4">
                   <p className="text-sm text-gray-500 mb-1">{tour.location}</p>
-                  <h3 className="font-bold mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="font-bold mb-2 text-gray-800 group-hover:text-blue-600 transition-colors">
                     {tour.title}
                   </h3>
                   <div className="flex items-center gap-2 mb-3 text-sm">
@@ -173,10 +173,10 @@ export default function ToursPage() {
                     <span className="text-gray-500">({tour.reviews} reviews)</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-2xl font-bold text-primary">
+                    <span className="text-2xl font-bold text-blue-600">
                       {tour.price}
                     </span>
-                    <button className="btn-primary text-sm px-4 py-2">
+                    <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold text-sm px-5 py-2.5 rounded-lg hover:shadow-lg transform hover:scale-105 transition-all">
                       Book Now
                     </button>
                   </div>
