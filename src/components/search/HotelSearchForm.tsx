@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { FaMapMarkerAlt, FaCalendar, FaUser } from 'react-icons/fa';
+import { FaCalendar, FaUser } from 'react-icons/fa';
+import CityAutocomplete from '@/components/CityAutocomplete';
 
 export default function HotelSearchForm() {
   const [formData, setFormData] = useState({
@@ -11,7 +12,7 @@ export default function HotelSearchForm() {
     guests: '2'
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     const params = new URLSearchParams({
@@ -21,26 +22,19 @@ export default function HotelSearchForm() {
       guests: formData.guests,
     });
 
-    window.location.href = `https://book.gotraveled.com/hotels?${params.toString()}`;
+    window.location.href = `/book/hotels?${params.toString()}`;
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {/* City */}
-      <div>
-        <label className="block text-sm font-semibold mb-2 text-gray-700">
-          <FaMapMarkerAlt className="inline mr-2 text-primary" />
-          Destination
-        </label>
-        <input
-          type="text"
-          placeholder="City, hotel, or landmark"
-          value={formData.city}
-          onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-          className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-gray-900 bg-white"
-          required
-        />
-      </div>
+      <CityAutocomplete
+        value={formData.city}
+        onChange={(value) => setFormData({ ...formData, city: value })}
+        placeholder="City, hotel, or landmark"
+        label="Destination"
+        required
+      />
 
       {/* Dates & Guests */}
       <div className="grid md:grid-cols-3 gap-4">
