@@ -17,14 +17,24 @@ const CarWidget = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const params = new URLSearchParams({
-      pickup: formData.pickup,
-      dropoff: formData.dropoff,
-      pickupDate: formData.pickupDate,
-      dropoffDate: formData.dropoffDate,
-    });
-
-    window.location.href = `/book/cars?${params.toString()}`;
+    // Build DiscoverCars affiliate URL with your marker
+    const searchUrl = new URL('https://www.discovercars.com/');
+    searchUrl.searchParams.append('a_aid', '250882');
+    
+    if (formData.pickup) {
+      searchUrl.searchParams.append('pick_up', formData.pickup);
+    }
+    if (formData.dropoff) {
+      searchUrl.searchParams.append('drop_off', formData.dropoff);
+    }
+    if (formData.pickupDate) {
+      searchUrl.searchParams.append('pick_up_date', formData.pickupDate);
+    }
+    if (formData.dropoffDate) {
+      searchUrl.searchParams.append('drop_off_date', formData.dropoffDate);
+    }
+    
+    window.location.href = searchUrl.toString();
   };
 
   return (

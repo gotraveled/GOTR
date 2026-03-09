@@ -16,13 +16,21 @@ export default function TransferSearchForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const params = new URLSearchParams({
-      from: formData.from,
-      to: formData.to,
-      date: formData.date,
-    });
-
-    window.location.href = `/book/transfers?${params.toString()}`;
+    // Build KiwiTaxi affiliate URL with your marker
+    const searchUrl = new URL('https://www.kiwitaxi.com/');
+    searchUrl.searchParams.append('marker', '250882');
+    
+    if (formData.from) {
+      searchUrl.searchParams.append('from', formData.from);
+    }
+    if (formData.to) {
+      searchUrl.searchParams.append('to', formData.to);
+    }
+    if (formData.date) {
+      searchUrl.searchParams.append('date', formData.date);
+    }
+    
+    window.location.href = searchUrl.toString();
   };
 
   return (

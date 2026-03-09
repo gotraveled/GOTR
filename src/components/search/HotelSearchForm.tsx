@@ -15,14 +15,25 @@ export default function HotelSearchForm() {
     const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const params = new URLSearchParams({
-      city: formData.city,
-      checkIn: formData.checkIn,
-      checkOut: formData.checkOut,
-      guests: formData.guests,
-    });
-
-    window.location.href = `/book/hotels?${params.toString()}`;
+    // Build Hotellook white label search URL
+    // Redirect to your Travelpayouts white label subdomain for hotels
+    const searchUrl = new URL('https://book.gotraveled.com/hotels');
+    searchUrl.searchParams.append('marker', '250882');
+    searchUrl.searchParams.append('locale', 'en');
+    searchUrl.searchParams.append('currency', 'usd');
+    
+    if (formData.city) {
+      searchUrl.searchParams.append('query', formData.city);
+    }
+    if (formData.checkIn) {
+      searchUrl.searchParams.append('checkIn', formData.checkIn);
+    }
+    if (formData.checkOut) {
+      searchUrl.searchParams.append('checkOut', formData.checkOut);
+    }
+    searchUrl.searchParams.append('adults', formData.guests);
+    
+    window.location.href = searchUrl.toString();
   };
 
   return (

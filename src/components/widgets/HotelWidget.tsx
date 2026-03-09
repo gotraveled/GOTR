@@ -17,15 +17,25 @@ const HotelWidget = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const params = new URLSearchParams({
-      city: formData.destination,
-      checkIn: formData.checkIn,
-      checkOut: formData.checkOut,
-      guests: formData.adults,
-      children: formData.children
-    });
-
-    window.location.href = `/book/hotels?${params.toString()}`;
+    // Build Hotellook white label search URL
+    const searchUrl = new URL('https://book.gotraveled.com/hotels');
+    searchUrl.searchParams.append('marker', '250882');
+    searchUrl.searchParams.append('locale', 'en');
+    searchUrl.searchParams.append('currency', 'usd');
+    
+    if (formData.destination) {
+      searchUrl.searchParams.append('query', formData.destination);
+    }
+    if (formData.checkIn) {
+      searchUrl.searchParams.append('checkIn', formData.checkIn);
+    }
+    if (formData.checkOut) {
+      searchUrl.searchParams.append('checkOut', formData.checkOut);
+    }
+    searchUrl.searchParams.append('adults', formData.adults);
+    searchUrl.searchParams.append('children', formData.children);
+    
+    window.location.href = searchUrl.toString();
   };
 
   // Get today's date for min attribute

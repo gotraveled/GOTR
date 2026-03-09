@@ -25,16 +25,14 @@ export default function PopularRoutes() {
     const returnDate = new Date(departure);
     returnDate.setDate(returnDate.getDate() + 7);
 
-    const params = new URLSearchParams({
-      origin: route.fromCode,
-      destination: route.toCode,
-      departure: departure.toISOString().split('T')[0],
-      return: returnDate.toISOString().split('T')[0],
-      passengers: '1',
-      tripType: 'roundtrip'
-    });
-
-    window.location.href = `/book/flights?${params.toString()}`;
+    // Format dates for Aviasales white label (YYYYMMDD)
+    const departureFormatted = departure.toISOString().split('T')[0].replace(/-/g, '');
+    const returnFormatted = returnDate.toISOString().split('T')[0].replace(/-/g, '');
+    
+    // Redirect to Aviasales white label: book.gotraveled.com/search/ORIGINDEPARTUREDESTINATIONRETURNPASSENGERS
+    const searchUrl = `https://book.gotraveled.com/search/${route.fromCode}${departureFormatted}${route.toCode}${returnFormatted}1?marker=250882`;
+    
+    window.location.href = searchUrl;
   };
 
   return (

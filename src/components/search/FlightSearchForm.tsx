@@ -19,18 +19,23 @@ export default function FlightSearchForm() {
     const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Build query string with airport codes
-    const params = new URLSearchParams({
-      origin: formData.originCode || formData.origin,
-      destination: formData.destinationCode || formData.destination,
-      departure: formData.departure,
-      return: formData.return,
-      passengers: formData.passengers,
-      tripType: formData.tripType
-    });
-
-    // Redirect to booking subdomain
-    window.location.href = `/book/flights?${params.toString()}`;
+    // Build Aviasales white label search URL
+    const origin = formData.originCode || formData.origin;
+    const destination = formData.destinationCode || formData.destination;
+    const departure = formData.departure;
+    const returnDate = formData.return;
+    
+    // Redirect to your Travelpayouts white label subdomain
+    // Format: https://book.gotraveled.com/search/ORIGIN+DEPARTURE+DESTINATION+RETURN+PASSENGERS
+    let searchUrl = `https://book.gotraveled.com/search/${origin}${departure.replace(/-/g, '')}${destination}`;
+    
+    if (formData.tripType === 'roundtrip' && returnDate) {
+      searchUrl += returnDate.replace(/-/g, '');
+    }
+    
+    searchUrl += `${formData.passengers}?marker=250882`;
+    
+    window.location.href = searchUrl;
   };
 
   return (
