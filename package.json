@@ -1,1 +1,31 @@
-{\n  "name": "travel-affiliate-website",\n  "version": "1.0.0",\n  "private": true,\n  "dependencies": {\n    "next": "16",\n    "react": "^18.0.0",\n    "react-dom": "^18.0.0",\n    "axios": "^0.21.0",\n    "dotenv": "^10.0.0",\n    "styled-components": "^5.3.0",\n    "@emotion/react": "^11.0.0",\n    "@emotion/styled": "^11.0.0"\n  },\n  "scripts": {\n    "dev": "next dev",\n    "build": "next build",\n    "start": "next start"\n  }\n}
+{
+  "name": "gotraveled",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^14.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.3.0",
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "axios": "^1.6.0",
+    "next-seo": "^6.5.0",
+    "framer-motion": "^11.0.0",
+    "react-icons": "^5.0.0",
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-next": "^14.2.0"
+  }
+}
