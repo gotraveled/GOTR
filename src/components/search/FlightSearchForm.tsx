@@ -2,31 +2,35 @@
 
 import { useState } from 'react';
 import { FaPlane, FaCalendar, FaUser } from 'react-icons/fa';
+import AirportAutocomplete from '@/components/AirportAutocomplete';
 
 export default function FlightSearchForm() {
   const [formData, setFormData] = useState({
     origin: '',
+    originCode: '',
     destination: '',
+    destinationCode: '',
     departure: '',
     return: '',
     passengers: '1',
     tripType: 'roundtrip'
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Build query string
+    // Build query string with airport codes
     const params = new URLSearchParams({
-      origin: formData.origin,
-      destination: formData.destination,
+      origin: formData.originCode || formData.origin,
+      destination: formData.destinationCode || formData.destination,
       departure: formData.departure,
       return: formData.return,
       passengers: formData.passengers,
+      tripType: formData.tripType
     });
 
     // Redirect to booking subdomain
-    window.location.href = `https://book.gotraveled.com/flights?${params.toString()}`;
+    window.location.href = `/book/flights?${params.toString()}`;
   };
 
   return (
@@ -59,34 +63,19 @@ export default function FlightSearchForm() {
 
       {/* Origin & Destination */}
       <div className="grid md:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-sm font-semibold mb-2 text-gray-700">
-            <FaPlane className="inline mr-2 text-primary" />
-            From
-          </label>
-          <input
-            type="text"
-            placeholder="City or Airport"
-            value={formData.origin}
-            onChange={(e) => setFormData({ ...formData, origin: e.target.value })}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-gray-900 bg-white"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-semibold mb-2 text-gray-700">
-            <FaPlane className="inline mr-2 text-primary transform rotate-90" />
-            To
-          </label>
-          <input
-            type="text"
-            placeholder="City or Airport"
-            value={formData.destination}
-            onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
-            className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-gray-900 bg-white"
-            required
-          />
-        </div>
+        <AirportAutocomplete
+          value={formData.origin}
+          onChange={(displayValue, code) => setFormData({ ...formData, origin: displayValue, originCode: code })}
+          placeholder="City or Airport"
+          label="From"
+          icon={FaPlane}
+        />
+        <AirportAutocomplete
+          value={formData.destination}
+          onChange={(displayValue, code) => setFormData({ ...formData, destination: displayValue, destinationCode: code })}
+          placeholder="City or Airport"
+          label="To"
+        />
       </div>
 
       {/* Dates & Passengers */}

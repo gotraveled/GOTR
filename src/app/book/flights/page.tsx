@@ -16,24 +16,43 @@ function FlightSearchContent() {
     const departure = searchParams.get('departure') || '';
     const returnDate = searchParams.get('return') || '';
     const passengers = searchParams.get('passengers') || '1';
+    const tripType = searchParams.get('tripType') || 'roundtrip';
 
-    // Build Aviasales search URL with affiliate marker
-    const aviasalesUrl = `https://www.aviasales.com/search/${origin}${departure}${destination}${returnDate}${passengers}?marker=250882`;
-
-    // Create iframe for Aviasales white-label integration
-    if (containerRef.current) {
+    // Use Travelpayouts search widget that stays on our domain
+    if (containerRef.current && origin && destination && departure) {
       containerRef.current.innerHTML = '';
       
-      const iframe = document.createElement('iframe');
-      iframe.src = aviasalesUrl;
-      iframe.style.width = '100%';
-      iframe.style.height = '1200px';
-      iframe.style.border = 'none';
-      iframe.style.borderRadius = '0.75rem';
-      iframe.allow = 'geolocation';
-      iframe.setAttribute('loading', 'eager');
+      // Create widget container
+      const widgetDiv = document.createElement('div');
+      widgetDiv.setAttribute('data-marker', '250882');
+      widgetDiv.setAttribute('data-origin', origin);
+      widgetDiv.setAttribute('data-destination', destination);
+      widgetDiv.setAttribute('data-depart_date', departure);
+      if (tripType === 'roundtrip' && returnDate) {
+        widgetDiv.setAttribute('data-return_date', returnDate);
+      }
+      widgetDiv.setAttribute('data-adults', passengers);
       
-      containerRef.current.appendChild(iframe);
+      // Add Travelpayouts script
+      const script = document.createElement('script');
+      script.src = '//tp.media/content?trs=17835&shmarker=250882&campaign_id=100&promo_id=4041&';
+      script.async = true;
+      script.charset = 'utf-8';
+      
+      containerRef.current.appendChild(widgetDiv);
+      containerRef.current.appendChild(script);
+      
+      // Add inline search form
+      const formContainer = document.createElement('div');
+      formContainer.id = 'TPWL_SEARCH_FORM';
+      formContainer.setAttribute('data-marker', '250882');
+      containerRef.current.insertBefore(formContainer, widgetDiv);
+      
+      // Load search form script
+      const formScript = document.createElement('script');
+      formScript.src = `//tp.media/content?promo_id=4041&shmarker=250882&trs=17835&type=init&search[origin]=${origin}&search[destination]=${destination}&search[depart_date]=${departure}${returnDate ? `&search[return_date]=${returnDate}` : ''}&search[adults]=${passengers}&locale=en&currency=usd&powered_by=true`;
+      formScript.async = true;
+      containerRef.current.appendChild(formScript);
     }
   }, [searchParams]);
 

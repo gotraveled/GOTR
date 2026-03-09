@@ -16,22 +16,26 @@ function HotelSearchContent() {
     const checkOut = searchParams.get('checkOut') || '';
     const guests = searchParams.get('guests') || '2';
 
-    // Build Hotellook search URL with affiliate marker
-    const hotellookUrl = `https://search.hotellook.com/?marker=250882&locale=en&currency=usd&query=${encodeURIComponent(city)}&checkIn=${checkIn}&checkOut=${checkOut}&adults=${guests}`;
-
-    // Create iframe for Hotellook white-label integration
-    if (containerRef.current) {
+    // Use Travelpayouts Hotellook widget that stays on our domain
+    if (containerRef.current && city && checkIn && checkOut) {
       containerRef.current.innerHTML = '';
       
-      const iframe = document.createElement('iframe');
-      iframe.src = hotellookUrl;
-      iframe.style.width = '100%';
-      iframe.style.height = '1200px';
-      iframe.style.border = 'none';
-      iframe.style.borderRadius = '0.75rem';
-      iframe.setAttribute('loading', 'eager');
+      // Create widget container
+      const widgetDiv = document.createElement('div');
+      widgetDiv.setAttribute('data-marker', '250882');
+      widgetDiv.setAttribute('data-city', city);
+      widgetDiv.setAttribute('data-check_in', checkIn);
+      widgetDiv.setAttribute('data-check_out', checkOut);
+      widgetDiv.setAttribute('data-adults', guests);
       
-      containerRef.current.appendChild(iframe);
+      // Add Hotellook search script
+      const script = document.createElement('script');
+      script.src = `//tp.media/content?promo_id=7866&shmarker=250882&trs=17835&type=hotel&city=${encodeURIComponent(city)}&check_in=${checkIn}&check_out=${checkOut}&guests=${guests}&locale=en&currency=usd&powered_by=true`;
+      script.async = true;
+      script.charset = 'utf-8';
+      
+      containerRef.current.appendChild(widgetDiv);
+      containerRef.current.appendChild(script);
     }
   }, [searchParams]);
 
