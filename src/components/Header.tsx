@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FiMenu, FiX, FiPhone, FiMail } from 'react-icons/fi';
-import { FaPlane, FaHotel, FaCar, FaTaxi, FaUmbrellaBeach, FaMapMarkedAlt } from 'react-icons/fa';
+import { FaPlane, FaHotel, FaCar, FaTaxi, FaUmbrellaBeach, FaMapMarkedAlt, FaShoppingBag } from 'react-icons/fa';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,6 +15,7 @@ const Header = () => {
     { name: 'Cars', href: '/cars', icon: FaCar },
     { name: 'Transfers', href: '/transfers', icon: FaTaxi },
     { name: 'Tours', href: '/tours', icon: FaUmbrellaBeach },
+    { name: 'Store', href: '/store', icon: FaShoppingBag },
     { name: 'Destinations', href: '/destinations', icon: FaMapMarkedAlt },
   ];
 
@@ -52,9 +53,9 @@ const Header = () => {
               <Image 
                 src="/logo.png" 
                 alt="GoTraveled - Your Travel Companion" 
-                width={200} 
-                height={60}
-                className="h-14 w-auto object-contain transition-transform group-hover:scale-105"
+                width={150} 
+                height={45}
+                className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
                 priority
               />
             </Link>
