@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { FiSearch, FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiX } from 'react-icons/fi';
 import { FaPlane } from 'react-icons/fa';
+import QuickSearch from './QuickSearch';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,9 +46,7 @@ const Header = () => {
 
           {/* Right Side - Search & Login */}
           <div className="hidden lg:flex items-center space-x-4">
-            <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-              <FiSearch className="text-xl text-gray-700" />
-            </button>
+            <QuickSearch />
             <button className="btn-primary">Login</button>
           </div>
 
