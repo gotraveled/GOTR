@@ -1,0 +1,17 @@
+# Node.js and Next.js Exclusions
+
+# Node modules
+node_modules/
+
+# Next.js build output
+.next/
+
+# Local environment variables
+.env.local
+
+# Vercel output
+.vercel/
+
+# IDE folders
+.vscode/
+.idea/
