@@ -115,15 +115,23 @@ export default function FlightSearchForm() {
         </div>
       </div>
 
+      {/* Info Message */}
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+        <p className="text-sm text-gray-700 text-center">
+          <strong>✈️ Ready to search?</strong><br />
+          Click below to access our flight search engine powered by Travelpayouts.
+        </p>
+      </div>
+      
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 px-8 rounded-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+        className="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 px-8 rounded-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 text-lg"
       >
-        Search Flights on book.gotraveled.com
+        🔍 Search Flights Now
       </button>
       <p className="text-xs text-center text-gray-500 mt-2">
-        You'll be redirected to our booking platform to complete your search
+        Opens book.gotraveled.com - our secure booking platform
       </p>
     </form>
   );
