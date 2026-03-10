@@ -77,14 +77,11 @@ const Header = () => {
               })}
             </div>
 
-            {/* Right Side - CTA */}
+            {/* Right Side - Contact */}
             <div className="hidden lg:flex items-center space-x-3">
-              <Link href="/contact" className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors">
-                Help
+              <Link href="/contact" className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+                Contact Us
               </Link>
-              <button className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
-                Sign In
-              </button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -118,13 +115,10 @@ const Header = () => {
                     </Link>
                   );
                 })}
-                <div className="pt-4 px-4 space-y-2">
-                  <Link href="/contact" className="block w-full py-2.5 px-4 text-center border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors">
-                    Help & Support
+                <div className="pt-4 px-4">
+                  <Link href="/contact" className="block w-full py-2.5 px-4 text-center bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:shadow-lg transition-all">
+                    Contact Us
                   </Link>
-                  <button className="w-full py-2.5 px-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg hover:shadow-lg transition-all">
-                    Sign In
-                  </button>
                 </div>
               </div>
             </div>

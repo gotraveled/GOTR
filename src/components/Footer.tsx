@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaPlane, FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube, FaShieldAlt, FaAward, FaHeadset } from 'react-icons/fa';
 
 const Footer = () => {
@@ -57,14 +58,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <Link href="/" className="flex items-center space-x-3 mb-4 group">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl transform rotate-6 group-hover:rotate-12 transition-transform"></div>
-                <div className="relative bg-gradient-to-br from-blue-500 to-blue-700 p-2.5 rounded-xl">
-                  <FaPlane className="text-white text-xl transform -rotate-45" />
-                </div>
-              </div>
-              <span className="text-2xl font-black">GoTraveled</span>
+            <Link href="/" className="flex items-center mb-4 group">
+              <Image 
+                src="/logo.png" 
+                alt="GoTraveled" 
+                width={150} 
+                height={45}
+                className="h-10 w-auto object-contain brightness-0 invert transition-transform group-hover:scale-105"
+              />
             </Link>
             <p className="text-gray-400 mb-4 leading-relaxed">
               Your trusted travel companion for finding the best deals on flights, hotels, 
