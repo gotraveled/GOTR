@@ -16,11 +16,41 @@ export default function FlightSearchForm() {
     tripType: 'roundtrip'
   });
 
-    const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Just redirect to book.gotraveled.com with marker - let it handle the search
-    window.location.href = `https://book.gotraveled.com/?marker=250882`;
+    // Format: OriginCode + DepartureDate(DDMM) + DestinationCode + ReturnDate(DDMM) + Passengers
+    // Example: IXC2103LHR22041 = IXC on 21/03 to LHR return 22/04, 1 passenger
+    
+    const originCode = formData.originCode || formData.origin.substring(0, 3).toUpperCase();
+    const destCode = formData.destinationCode || formData.destination.substring(0, 3).toUpperCase();
+    
+    // Parse departure date
+    const depDate = new Date(formData.departure);
+    const depDay = String(depDate.getDate()).padStart(2, '0');
+    const depMonth = String(depDate.getMonth() + 1).padStart(2, '0');
+    
+    let flightSearchCode = `${originCode}${depDay}${depMonth}${destCode}`;
+    
+    // Add return date for round trip
+    if (formData.tripType === 'roundtrip' && formData.return) {
+      const retDate = new Date(formData.return);
+      const retDay = String(retDate.getDate()).padStart(2, '0');
+      const retMonth = String(retDate.getMonth() + 1).padStart(2, '0');
+      flightSearchCode += `${retDay}${retMonth}`;
+    }
+    
+    // Add passengers
+    flightSearchCode += formData.passengers;
+    
+    // Build URL with proper parameters
+    const params = new URLSearchParams();
+    params.append('flightSearch', flightSearchCode);
+    params.append('destination_airports', '0');
+    params.append('origin_airports', '1');
+    params.append('marker', '250882');
+    
+    window.location.href = `https://book.gotraveled.com/?${params.toString()}`;
   };
 
   return (
@@ -115,24 +145,13 @@ export default function FlightSearchForm() {
         </div>
       </div>
 
-      {/* Info Message */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-        <p className="text-sm text-gray-700 text-center">
-          <strong>✈️ Ready to search?</strong><br />
-          Click below to access our flight search engine powered by Travelpayouts.
-        </p>
-      </div>
-      
       {/* Submit Button */}
       <button
         type="submit"
         className="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 px-8 rounded-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 text-lg"
       >
-        🔍 Search Flights Now
+        Search Flights
       </button>
-      <p className="text-xs text-center text-gray-500 mt-2">
-        Opens book.gotraveled.com - our secure booking platform
-      </p>
     </form>
   );
 }
