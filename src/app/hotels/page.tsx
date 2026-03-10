@@ -100,13 +100,24 @@ export default function HotelsPage() {
               <div 
                 key={destination.city} 
                 onClick={scrollToSearch}
-                className="card group cursor-pointer hover:shadow-2xl transition-all"
+                className="bg-white rounded-xl shadow-md overflow-hidden group cursor-pointer hover:shadow-2xl transition-all transform hover:-translate-y-1"
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    scrollToSearch();
+                  }
+                }}
               >
-                <div 
-                  className="h-48 bg-cover bg-center group-hover:scale-105 transition-transform duration-300"
-                  style={{ backgroundImage: `url(${destination.image})` }}
-                >
-                  <div className="h-full bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={destination.image}
+                    alt={destination.city}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
                     <h3 className="text-2xl font-bold text-white">{destination.city}</h3>
                     <p className="text-blue-200">{destination.hotels} hotels</p>
                   </div>
