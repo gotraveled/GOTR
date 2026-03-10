@@ -18,16 +18,34 @@ export default function QuickSearch() {
     e.preventDefault();
     
     switch (activeType) {
-      case 'flights':
-        window.location.href = `https://book.gotraveled.com/?marker=250882`;
+      case 'flights': {
+        // Build flightSearch code
+        const depDate = new Date(flightData.departure);
+        const depDay = String(depDate.getDate()).padStart(2, '0');
+        const depMonth = String(depDate.getMonth() + 1).padStart(2, '0');
+        
+        // For one-way, just use departure date
+        const flightSearchCode = `${flightData.origin.toUpperCase()}${depDay}${depMonth}${flightData.destination.toUpperCase()}1`;
+        
+        const params = new URLSearchParams();
+        params.append('flightSearch', flightSearchCode);
+        params.append('destination_airports', '0');
+        params.append('origin_airports', '1');
+        params.append('marker', '250882');
+        
+        window.location.href = `https://book.gotraveled.com/?${params.toString()}`;
         break;
+      }
       case 'hotels':
+        // Hotels - redirect to base for now until Hotellook connected
         window.location.href = `https://book.gotraveled.com/hotels?marker=250882`;
         break;
       case 'cars':
+        // Cars - redirect to base with marker
         window.location.href = `https://book.gotraveled.com/cars?marker=250882`;
         break;
       case 'transfers':
+        // Transfers - redirect to base with marker
         window.location.href = `https://book.gotraveled.com/transfers?marker=250882`;
         break;
     }

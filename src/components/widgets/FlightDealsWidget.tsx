@@ -144,7 +144,24 @@ const FlightDealsWidget = () => {
           
           <button
             onClick={() => {
-              window.location.href = `https://book.gotraveled.com/?marker=250882`;
+              // Build flightSearch code from deal dates
+              const depDate = new Date(deal.departure_at);
+              const depDay = String(depDate.getDate()).padStart(2, '0');
+              const depMonth = String(depDate.getMonth() + 1).padStart(2, '0');
+              
+              const retDate = new Date(deal.return_at);
+              const retDay = String(retDate.getDate()).padStart(2, '0');
+              const retMonth = String(retDate.getMonth() + 1).padStart(2, '0');
+              
+              const flightSearchCode = `${deal.origin}${depDay}${depMonth}${deal.destination}${retDay}${retMonth}1`;
+              
+              const params = new URLSearchParams();
+              params.append('flightSearch', flightSearchCode);
+              params.append('destination_airports', '0');
+              params.append('origin_airports', '1');
+              params.append('marker', '250882');
+              
+              window.location.href = `https://book.gotraveled.com/?${params.toString()}`;
             }}
             className="block w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white text-center font-bold py-3 px-4 rounded-lg hover:shadow-lg transform hover:scale-105 transition-all"
           >

@@ -19,7 +19,28 @@ export default function PopularRoutes() {
   ];
 
   const handleRouteSearch = (route: Route) => {
-    window.location.href = `https://book.gotraveled.com/?marker=250882`;
+    // Get date 30 days from now for departure
+    const depDate = new Date();
+    depDate.setDate(depDate.getDate() + 30);
+    const depDay = String(depDate.getDate()).padStart(2, '0');
+    const depMonth = String(depDate.getMonth() + 1).padStart(2, '0');
+    
+    // Get date 37 days from now for return (7 day trip)
+    const retDate = new Date();
+    retDate.setDate(retDate.getDate() + 37);
+    const retDay = String(retDate.getDate()).padStart(2, '0');
+    const retMonth = String(retDate.getMonth() + 1).padStart(2, '0');
+    
+    // Build flightSearch code: OriginCode+DDMM+DestCode+DDMM+Passengers
+    const flightSearchCode = `${route.fromCode}${depDay}${depMonth}${route.toCode}${retDay}${retMonth}1`;
+    
+    const params = new URLSearchParams();
+    params.append('flightSearch', flightSearchCode);
+    params.append('destination_airports', '0');
+    params.append('origin_airports', '1');
+    params.append('marker', '250882');
+    
+    window.location.href = `https://book.gotraveled.com/?${params.toString()}`;
   };
 
   return (
