@@ -15,23 +15,8 @@ export default function HotelSearchForm() {
     const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Build Hotellook white label search URL
-    // Format: https://book.gotraveled.com/hotels?city=NewYork&checkIn=2024-03-15&checkOut=2024-03-20&adults=2&marker=250882
-    const searchUrl = new URL('https://book.gotraveled.com/hotels');
-    
-    if (formData.city) {
-      searchUrl.searchParams.append('city', formData.city);
-    }
-    if (formData.checkIn) {
-      searchUrl.searchParams.append('checkIn', formData.checkIn);
-    }
-    if (formData.checkOut) {
-      searchUrl.searchParams.append('checkOut', formData.checkOut);
-    }
-    searchUrl.searchParams.append('adults', formData.guests);
-    searchUrl.searchParams.append('marker', '250882');
-    
-    window.location.href = searchUrl.toString();
+    // Redirect to book.gotraveled.com hotels with marker
+    window.location.href = `https://book.gotraveled.com/hotels?marker=250882`;
   };
 
   return (
@@ -95,8 +80,11 @@ export default function HotelSearchForm() {
         type="submit"
         className="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 px-8 rounded-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
       >
-        Search Hotels
+        Search Hotels on book.gotraveled.com
       </button>
+      <p className="text-xs text-center text-gray-500 mt-2">
+        You'll be redirected to our booking platform to complete your search
+      </p>
     </form>
   );
 }

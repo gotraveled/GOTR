@@ -17,25 +17,8 @@ const HotelWidget = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Build Hotellook white label search URL
-    const searchUrl = new URL('https://book.gotraveled.com/hotels');
-    
-    if (formData.destination) {
-      searchUrl.searchParams.append('city', formData.destination);
-    }
-    if (formData.checkIn) {
-      searchUrl.searchParams.append('checkIn', formData.checkIn);
-    }
-    if (formData.checkOut) {
-      searchUrl.searchParams.append('checkOut', formData.checkOut);
-    }
-    searchUrl.searchParams.append('adults', formData.adults);
-    if (formData.children !== '0') {
-      searchUrl.searchParams.append('children', formData.children);
-    }
-    searchUrl.searchParams.append('marker', '250882');
-    
-    window.location.href = searchUrl.toString();
+    // Redirect to book.gotraveled.com hotels
+    window.location.href = `https://book.gotraveled.com/hotels?marker=250882`;
   };
 
   // Get today's date for min attribute

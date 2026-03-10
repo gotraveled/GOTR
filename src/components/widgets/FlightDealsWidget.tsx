@@ -144,18 +144,7 @@ const FlightDealsWidget = () => {
           
           <button
             onClick={() => {
-              // Format dates from YYYY-MM-DD to DDMMYY
-              const formatDate = (date: string) => {
-                const [year, month, day] = date.split('-');
-                return `${day}${month}${year.slice(-2)}`;
-              };
-              
-              const departDate = formatDate(deal.departure_at);
-              const returnDate = formatDate(deal.return_at);
-              
-              // Aviasales format: /ORIGIN-DESTINATION-DDMMYY-DDMMYY-PASSENGERS
-              const searchUrl = `https://book.gotraveled.com/${deal.origin}-${deal.destination}-${departDate}-${returnDate}-1?marker=250882`;
-              window.location.href = searchUrl;
+              window.location.href = `https://book.gotraveled.com/?marker=250882`;
             }}
             className="block w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white text-center font-bold py-3 px-4 rounded-lg hover:shadow-lg transform hover:scale-105 transition-all"
           >

@@ -19,31 +19,8 @@ export default function FlightSearchForm() {
     const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Build Aviasales white label search URL
-    const origin = (formData.originCode || formData.origin).toUpperCase();
-    const destination = (formData.destinationCode || formData.destination).toUpperCase();
-    const departure = formData.departure.replace(/-/g, '');
-    const returnDate = formData.return ? formData.return.replace(/-/g, '') : '';
-    
-    // Aviasales white label URL format: /ORIGIN-DESTINATION-DDMMYY-DDMMYY-PASSENGERS
-    // Example: https://book.gotraveled.com/NYC-LON-150324-220324-1
-    let searchPath = `/${origin}-${destination}-${formatDateDDMMYY(formData.departure)}`;
-    
-    if (formData.tripType === 'roundtrip' && returnDate) {
-      searchPath += `-${formatDateDDMMYY(formData.return)}`;
-    }
-    
-    searchPath += `-${formData.passengers}`;
-    
-    const searchUrl = `https://book.gotraveled.com${searchPath}?marker=250882`;
-    
-    window.location.href = searchUrl;
-  };
-  
-  // Helper function to format date from YYYY-MM-DD to DDMMYY
-  const formatDateDDMMYY = (dateStr: string) => {
-    const [year, month, day] = dateStr.split('-');
-    return `${day}${month}${year.slice(-2)}`;
+    // Just redirect to book.gotraveled.com with marker - let it handle the search
+    window.location.href = `https://book.gotraveled.com/?marker=250882`;
   };
 
   return (
@@ -143,8 +120,11 @@ export default function FlightSearchForm() {
         type="submit"
         className="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 px-8 rounded-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
       >
-        Search Flights
+        Search Flights on book.gotraveled.com
       </button>
+      <p className="text-xs text-center text-gray-500 mt-2">
+        You'll be redirected to our booking platform to complete your search
+      </p>
     </form>
   );
 }

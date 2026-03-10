@@ -19,37 +19,16 @@ export default function QuickSearch() {
     
     switch (activeType) {
       case 'flights':
-        if (flightData.origin && flightData.destination && flightData.departure) {
-          // Format date from YYYY-MM-DD to DDMMYY
-          const [year, month, day] = flightData.departure.split('-');
-          const formattedDate = `${day}${month}${year.slice(-2)}`;
-          
-          // Aviasales format: /ORIGIN-DESTINATION-DDMMYY-PASSENGERS (one-way)
-          const searchUrl = `https://book.gotraveled.com/${flightData.origin.toUpperCase()}-${flightData.destination.toUpperCase()}-${formattedDate}-1?marker=250882`;
-          window.location.href = searchUrl;
-        }
+        window.location.href = `https://book.gotraveled.com/?marker=250882`;
         break;
       case 'hotels':
-        if (hotelData.city && hotelData.checkIn && hotelData.checkOut) {
-          const params = new URLSearchParams(hotelData);
-          window.location.href = `https://book.gotraveled.com/hotels?${params.toString()}`;
-        }
+        window.location.href = `https://book.gotraveled.com/hotels?marker=250882`;
         break;
       case 'cars':
-        if (carData.pickup && carData.pickupDate) {
-          const params = new URLSearchParams({
-            ...carData,
-            dropoff: carData.pickup,
-            dropoffDate: carData.pickupDate
-          });
-          window.location.href = `https://book.gotraveled.com/cars?${params.toString()}`;
-        }
+        window.location.href = `https://book.gotraveled.com/cars?marker=250882`;
         break;
       case 'transfers':
-        if (transferData.from && transferData.to && transferData.date) {
-          const params = new URLSearchParams(transferData);
-          window.location.href = `https://book.gotraveled.com/transfers?${params.toString()}`;
-        }
+        window.location.href = `https://book.gotraveled.com/transfers?marker=250882`;
         break;
     }
     setIsOpen(false);

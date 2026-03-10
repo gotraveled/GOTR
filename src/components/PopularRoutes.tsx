@@ -19,27 +19,7 @@ export default function PopularRoutes() {
   ];
 
   const handleRouteSearch = (route: Route) => {
-    const today = new Date();
-    const departure = new Date(today);
-    departure.setDate(departure.getDate() + 30);
-    const returnDate = new Date(departure);
-    returnDate.setDate(returnDate.getDate() + 7);
-
-    // Format dates to DDMMYY for Aviasales
-    const formatDate = (date: Date) => {
-      const day = String(date.getDate()).padStart(2, '0');
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const year = String(date.getFullYear()).slice(-2);
-      return `${day}${month}${year}`;
-    };
-    
-    const departureFormatted = formatDate(departure);
-    const returnFormatted = formatDate(returnDate);
-    
-    // Aviasales format: /ORIGIN-DESTINATION-DDMMYY-DDMMYY-PASSENGERS
-    const searchUrl = `https://book.gotraveled.com/${route.fromCode}-${route.toCode}-${departureFormatted}-${returnFormatted}-1?marker=250882`;
-    
-    window.location.href = searchUrl;
+    window.location.href = `https://book.gotraveled.com/?marker=250882`;
   };
 
   return (
