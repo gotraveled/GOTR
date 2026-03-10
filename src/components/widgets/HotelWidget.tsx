@@ -17,26 +17,27 @@ const HotelWidget = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Build Hotellook search URL
+    // Build Booking.com search URL
+    const [checkInYear, checkInMonth, checkInDay] = formData.checkIn.split('-');
+    const [checkOutYear, checkOutMonth, checkOutDay] = formData.checkOut.split('-');
+    
     const params = new URLSearchParams();
+    params.append('aid', '338584');
+    params.append('label', 'affnetTP_393530915594160');
+    params.append('ss', formData.destination);
+    params.append('checkin_year', checkInYear);
+    params.append('checkin_month', checkInMonth);
+    params.append('checkin_monthday', checkInDay);
+    params.append('checkout_year', checkOutYear);
+    params.append('checkout_month', checkOutMonth);
+    params.append('checkout_monthday', checkOutDay);
+    params.append('group_adults', formData.adults);
+    params.append('group_children', formData.children);
+    params.append('no_rooms', '1');
+    params.append('sb_price_type', 'total');
+    params.append('from_sf', '1');
     
-    // Use city name or city ID if available
-    if (formData.destinationId) {
-      params.append('cityId', formData.destinationId);
-    } else {
-      params.append('city', formData.destination);
-    }
-    
-    params.append('checkIn', formData.checkIn);
-    params.append('checkOut', formData.checkOut);
-    
-    // Calculate total guests (adults + children)
-    const totalGuests = parseInt(formData.adults) + parseInt(formData.children);
-    params.append('adults', totalGuests.toString());
-    params.append('marker', '250882');
-    
-    // Redirect to Hotellook search
-    window.location.href = `https://search.hotellook.com/?${params.toString()}`;
+    window.location.href = `https://sp.booking.com/searchresults.en-us.html?${params.toString()}`;
   };
 
   // Get today's date for min attribute

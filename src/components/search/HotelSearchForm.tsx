@@ -21,11 +21,11 @@ export default function HotelSearchForm() {
     const [checkInYear, checkInMonth, checkInDay] = formData.checkIn.split('-');
     const [checkOutYear, checkOutMonth, checkOutDay] = formData.checkOut.split('-');
     
-    // Build Booking.com URL
+    // Build Booking.com URL - using en-us format like the working example
     const params = new URLSearchParams();
-    params.append('aid', '338584'); // Your Booking.com affiliate ID
-    params.append('label', 'affnetTP_393530915594160'); // Your label from Travelpayouts
-    params.append('ss', formData.city); // Search string (city/hotel name)
+    params.append('aid', '338584');
+    params.append('label', 'affnetTP_393530915594160');
+    params.append('ss', formData.city);
     params.append('checkin_year', checkInYear);
     params.append('checkin_month', checkInMonth);
     params.append('checkin_monthday', checkInDay);
@@ -36,9 +36,10 @@ export default function HotelSearchForm() {
     params.append('group_children', '0');
     params.append('no_rooms', '1');
     params.append('sb_price_type', 'total');
+    params.append('from_sf', '1'); // From search form flag
     
-    // Redirect to Booking.com search
-    window.location.href = `https://sp.booking.com/searchresults.html?${params.toString()}`;
+    // Redirect to Booking.com search (using en-us.html format)
+    window.location.href = `https://sp.booking.com/searchresults.en-us.html?${params.toString()}`;
   };
 
   return (

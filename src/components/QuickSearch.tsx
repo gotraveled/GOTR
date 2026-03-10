@@ -53,8 +53,9 @@ export default function QuickSearch() {
         params.append('group_children', '0');
         params.append('no_rooms', '1');
         params.append('sb_price_type', 'total');
+        params.append('from_sf', '1');
         
-        window.location.href = `https://sp.booking.com/searchresults.html?${params.toString()}`;
+        window.location.href = `https://sp.booking.com/searchresults.en-us.html?${params.toString()}`;
         break;
       }
       case 'cars':
