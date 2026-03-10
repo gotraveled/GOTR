@@ -86,146 +86,209 @@ export default function ToursPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary to-secondary text-white py-20">
-        <div className="container-custom">
+      <section className="relative text-white py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1920&q=80"
+            alt="India Tours"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-600/90 via-pink-600/85 to-purple-700/90"></div>
+        </div>
+        <div className="container-custom relative">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">
-            Tours & Activities Worldwide
+            India Tour Packages & International Tours
           </h1>
-          <p className="text-xl mb-8 text-center">
-            Discover unforgettable experiences and adventures around the globe
+          <p className="text-xl mb-8 text-center max-w-3xl mx-auto">
+            Explore incredible India and discover amazing international destinations with our curated tour packages
           </p>
-          
-          {/* Search Bar */}
-          <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-2xl p-6">
-            <div className="grid md:grid-cols-3 gap-4">
-              <input
-                type="text"
-                placeholder="Where do you want to go?"
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all text-gray-900 bg-white"
-              />
-              <input
-                type="date"
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all text-gray-900 bg-white"
-              />
-              <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold py-3 px-6 rounded-lg hover:shadow-xl transform hover:scale-105 transition-all">Search Tours</button>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* Tour Packages */}
-      <section className="py-16 bg-gradient-to-br from-blue-50 to-purple-50">
-        <div className="container-custom">
-          <h2 className="section-title text-center">Tour Packages</h2>
-          <p className="section-subtitle text-center">Complete vacation packages with flights, hotels, and activities</p>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
-            <Link href="/tours/domestic" className="group">
-              <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
-                <div className="relative h-64">
-                  <Image src="https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?w=600&q=80" alt="Domestic Tours" fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-3xl font-bold mb-2">🇺🇸 Domestic Tours</h3>
-                    <p className="text-lg">Explore the best of USA</p>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-gray-700 mb-4">Grand Canyon, Yellowstone, New York, California and more amazing domestic destinations</p>
-                  <div className="text-blue-600 font-bold group-hover:translate-x-2 transition-transform">View Packages →</div>
-                </div>
-              </div>
-            </Link>
-            <Link href="/tours/international" className="group">
-              <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
-                <div className="relative h-64">
-                  <Image src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80" alt="International Tours" fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-3xl font-bold mb-2">🌍 International Tours</h3>
-                    <p className="text-lg">Discover the world</p>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-gray-700 mb-4">Europe, Asia, Dubai, Bali, Japan and exotic international destinations worldwide</p>
-                  <div className="text-purple-600 font-bold group-hover:translate-x-2 transition-transform">View Packages →</div>
-                </div>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Categories */}
       <section className="py-16 bg-white">
         <div className="container-custom">
-          <h2 className="section-title text-center">Browse Tours by Activity</h2>
-          <p className="section-subtitle text-center">
-            Find the perfect activity for your adventure
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categories.map((category) => (
-              <div key={category.name} className="bg-white rounded-xl shadow-lg overflow-hidden group cursor-pointer hover:shadow-2xl transition-all">
-                <div 
-                  className="h-48 bg-cover bg-center relative overflow-hidden"
-                  style={{ backgroundImage: `url(${category.image})` }}
-                >
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-all"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-6xl">{category.icon}</div>
+          <h2 className="section-title text-center">Choose Your Adventure</h2>
+          <p className="section-subtitle text-center">Complete tour packages with accommodation, transport, and sightseeing</p>
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-8">
+            <Link href="/tours/domestic" className="group block">
+              <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                <div className="relative h-80">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80" 
+                    alt="Domestic India Tours" 
+                    fill 
+                    className="object-cover group-hover:scale-110 transition-transform duration-500" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                    <h3 className="text-4xl font-bold mb-3">🇮🇳 Domestic Tours</h3>
+                    <p className="text-lg mb-2">Explore Incredible India</p>
+                    <p className="text-sm text-gray-200">Kashmir • Himachal • Rajasthan • Kerala • Goa</p>
                   </div>
                 </div>
-                <div className="p-6 text-center">
-                  <h3 className="text-xl font-bold mb-2 text-gray-800 group-hover:text-blue-600 transition-colors">
-                    {category.name}
-                  </h3>
-                  <p className="text-gray-600">{category.description}</p>
+                <div className="p-6">
+                  <p className="text-gray-700 mb-4">Discover India's diverse landscapes from Himalayan peaks to tropical beaches. 35+ destinations including Kashmir, Shimla, Jaipur, Kerala, and more.</p>
+                  <div className="flex items-center text-orange-600 font-bold group-hover:translate-x-2 transition-transform">
+                    <span>Explore Domestic Tours</span>
+                    <span className="ml-2">→</span>
+                  </div>
                 </div>
               </div>
-            ))}
+            </Link>
+            <Link href="/tours/international" className="group block">
+              <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                <div className="relative h-80">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80" 
+                    alt="International Tours" 
+                    fill 
+                    className="object-cover group-hover:scale-110 transition-transform duration-500" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                    <h3 className="text-4xl font-bold mb-3">🌍 International Tours</h3>
+                    <p className="text-lg mb-2">Discover the World</p>
+                    <p className="text-sm text-gray-200">Dubai • Singapore • Thailand • Europe • Bali</p>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <p className="text-gray-700 mb-4">Experience world-class destinations across Asia, Middle East, and Europe. 9 international packages including Dubai, Thailand, Singapore, and more.</p>
+                  <div className="flex items-center text-purple-600 font-bold group-hover:translate-x-2 transition-transform">
+                    <span>Explore International Tours</span>
+                    <span className="ml-2">→</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Popular Tours */}
+      {/* Popular Regions */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom">
-          <h2 className="section-title text-center">Popular Tours & Activities</h2>
-          <p className="section-subtitle text-center">
-            Top-rated experiences chosen by travelers
-          </p>
+          <h2 className="section-title text-center">Popular Regions in India</h2>
+          <p className="section-subtitle text-center">Explore diverse landscapes and rich cultural heritage</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {popularTours.map((tour) => (
-              <div key={tour.title} className="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all">
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={tour.image}
-                    alt={tour.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-4">
-                  <p className="text-sm text-gray-500 mb-1">{tour.location}</p>
-                  <h3 className="font-bold mb-2 text-gray-800 group-hover:text-blue-600 transition-colors">
-                    {tour.title}
-                  </h3>
-                  <div className="flex items-center gap-2 mb-3 text-sm">
-                    <span className="text-yellow-500">⭐ {tour.rating}</span>
-                    <span className="text-gray-500">({tour.reviews} reviews)</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-2xl font-bold text-blue-600">
-                      {tour.price}
-                    </span>
-                    <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold text-sm px-5 py-2.5 rounded-lg hover:shadow-lg transform hover:scale-105 transition-all">
-                      Book Now
-                    </button>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+            <Link href="/tours/domestic" className="group">
+              <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all">
+                <div className="relative h-40">
+                  <Image src="https://images.unsplash.com/photo-1567016526105-22da7c13161a?w=400&q=80" alt="Kashmir" fill className="object-cover group-hover:scale-110 transition-transform" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h3 className="text-lg font-bold">Kashmir</h3>
+                    <p className="text-xs">Paradise on Earth</p>
                   </div>
                 </div>
               </div>
-            ))}
+            </Link>
+            <Link href="/tours/domestic" className="group">
+              <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all">
+                <div className="relative h-40">
+                  <Image src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09f?w=400&q=80" alt="Rajasthan" fill className="object-cover group-hover:scale-110 transition-transform" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h3 className="text-lg font-bold">Rajasthan</h3>
+                    <p className="text-xs">Royal Heritage</p>
+                  </div>
+                </div>
+              </div>
+            </Link>
+            <Link href="/tours/domestic" className="group">
+              <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all">
+                <div className="relative h-40">
+                  <Image src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=400&q=80" alt="Kerala" fill className="object-cover group-hover:scale-110 transition-transform" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h3 className="text-lg font-bold">Kerala</h3>
+                    <p className="text-xs">God's Own Country</p>
+                  </div>
+                </div>
+              </div>
+            </Link>
+            <Link href="/tours/domestic" className="group">
+              <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all">
+                <div className="relative h-40">
+                  <Image src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=400&q=80" alt="Goa" fill className="object-cover group-hover:scale-110 transition-transform" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h3 className="text-lg font-bold">Goa</h3>
+                    <p className="text-xs">Beach Paradise</p>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Destinations */}
+      <section className="py-16 bg-white">
+        <div className="container-custom">
+          <h2 className="section-title text-center">Featured Tour Packages</h2>
+          <p className="section-subtitle text-center">Handpicked tours for unforgettable experiences</p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+            <Link href="/tours/domestic/kashmir" className="group">
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all">
+                <div className="relative h-56">
+                  <Image src="https://images.unsplash.com/photo-1567016526105-22da7c13161a?w=600&q=80" alt="Kashmir" fill className="object-cover group-hover:scale-110 transition-transform" />
+                  <div className="absolute top-3 right-3 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">Popular</div>
+                </div>
+                <div className="p-5">
+                  <h3 className="font-bold text-xl mb-2 group-hover:text-orange-600 transition-colors">Kashmir Valley Tour</h3>
+                  <p className="text-gray-600 text-sm mb-3">Srinagar • Gulmarg • Pahalgam • Sonamarg</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-orange-600 font-bold">Contact for Pricing</span>
+                    <span className="text-sm text-gray-500">5-7 Days</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+            <Link href="/tours/domestic/golden-triangle" className="group">
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all">
+                <div className="relative h-56">
+                  <Image src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09f?w=600&q=80" alt="Golden Triangle" fill className="object-cover group-hover:scale-110 transition-transform" />
+                  <div className="absolute top-3 right-3 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">Bestseller</div>
+                </div>
+                <div className="p-5">
+                  <h3 className="font-bold text-xl mb-2 group-hover:text-orange-600 transition-colors">Golden Triangle Tour</h3>
+                  <p className="text-gray-600 text-sm mb-3">Delhi • Agra • Jaipur</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-orange-600 font-bold">Contact for Pricing</span>
+                    <span className="text-sm text-gray-500">5-7 Days</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+            <Link href="/tours/international/dubai" className="group">
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all">
+                <div className="relative h-56">
+                  <Image src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80" alt="Dubai" fill className="object-cover group-hover:scale-110 transition-transform" />
+                  <div className="absolute top-3 right-3 bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold">International</div>
+                </div>
+                <div className="p-5">
+                  <h3 className="font-bold text-xl mb-2 group-hover:text-purple-600 transition-colors">Dubai Explorer</h3>
+                  <p className="text-gray-600 text-sm mb-3">Burj Khalifa • Desert Safari • Dubai Mall</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-purple-600 font-bold">Contact for Pricing</span>
+                    <span className="text-sm text-gray-500">4-5 Days</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
+          <div className="text-center mt-10">
+            <Link href="/tours/domestic" className="inline-block bg-gradient-to-r from-orange-600 to-pink-600 text-white font-bold py-4 px-8 rounded-xl hover:shadow-xl transform hover:scale-105 transition-all mr-4">
+              View All Domestic Tours
+            </Link>
+            <Link href="/tours/international" className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold py-4 px-8 rounded-xl hover:shadow-xl transform hover:scale-105 transition-all">
+              View All International Tours
+            </Link>
           </div>
         </div>
       </section>
