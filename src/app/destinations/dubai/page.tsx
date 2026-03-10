@@ -146,7 +146,7 @@ export default function DubaiPage() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="order-2 md:order-1 relative h-64 md:h-80 rounded-xl overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1559167357-d2bc0b036d9c?w=800&q=80"
+                  src="https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?w=800&q=80"
                   alt="Dubai Desert Safari"
                   fill
                   className="object-cover"
