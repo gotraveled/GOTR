@@ -213,8 +213,13 @@ export default function HotelCityAutocomplete({ value, onChange, placeholder, la
       
       {showSuggestions && suggestions.length === 0 && !isLoading && inputValue.length >= 3 && (
         <div className="absolute z-50 w-full mt-1 bg-white border-2 border-gray-200 rounded-lg shadow-lg p-4">
-          <p className="text-gray-600 text-sm">💡 <strong>Tip:</strong> Type any hotel name, city, or address.</p>
-          <p className="text-gray-500 text-xs mt-1">Be specific: "Oberoi Mumbai" or "Oberoi Udaivilas Udaipur"</p>
+          <p className="text-gray-600 text-sm mb-2">💡 <strong>You can type:</strong></p>
+          <ul className="text-gray-600 text-sm space-y-1 ml-4 list-disc">
+            <li><strong>Hotel + City:</strong> "Oberoi Mumbai"</li>
+            <li><strong>Specific Hotel:</strong> "Taj Mahal Palace"</li>
+            <li><strong>Just City:</strong> "Paris" or "New York"</li>
+          </ul>
+          <p className="text-green-600 text-xs mt-2 font-semibold">✓ Booking.com will show all matching hotels when you search!</p>
         </div>
       )}
     </div>

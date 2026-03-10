@@ -9,65 +9,75 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    // Try Booking.com GraphQL autocomplete API
-    const graphqlQuery = {
-      operationName: 'searchAutoComplete',
-      variables: {
-        request: {
-          language: 'en-us',
-          searchTerm: query
-        }
-      },
-      query: `
-        query searchAutoComplete($request: SearchAutocompleteRequest!) {
-          searchAutocomplete(request: $request) {
-            results {
-              destId
-              destType
-              city
-              country
-              name
-              __typename
+    // Try multiple Booking.com autocomplete endpoints
+    const endpoints = [
+      // Endpoint 1: Main autocomplete
+      `https://accommodations.booking.com/autocomplete.json?text=${encodeURIComponent(query)}&language=en`,
+      // Endpoint 2: Search autocomplete
+      `https://www.booking.com/autocomplete_xhr?text=${encodeURIComponent(query)}&lang=en`,
+      // Endpoint 3: Destinations
+      `https://www.booking.com/destinations/autocomplete.json?term=${encodeURIComponent(query)}&lang=en`
+    ];
+
+    for (const endpoint of endpoints) {
+      try {
+        const response = await fetch(endpoint, {
+          headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'application/json',
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Referer': 'https://www.booking.com/'
+          },
+          next: { revalidate: 3600 } // Cache for 1 hour
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          
+          // Handle different response formats
+          let rawResults = [];
+          
+          if (Array.isArray(data)) {
+            rawResults = data;
+          } else if (data?.results) {
+            rawResults = data.results;
+          } else if (data?.data) {
+            rawResults = data.data;
+          }
+
+          if (rawResults.length > 0) {
+            const results = rawResults.slice(0, 15).map((item: any) => {
+              const isHotel = item.dest_type === 'hotel' || item.type === 'hotel' || item.cc1 === 'hotel';
+              const name = item.name || item.label || item.dest_name || '';
+              const city = item.city_name || item.city || '';
+              
+              return {
+                label: isHotel && city ? `${name} (${city})` : name,
+                name: name,
+                dest_type: isHotel ? 'hotel' : 'city',
+                type: isHotel ? 'hotel' : 'city',
+                city_name: city,
+                country: item.country || item.region || '',
+                dest_id: item.dest_id || item.id
+              };
+            }).filter((item: any) => item.name); // Remove empty results
+
+            if (results.length > 0) {
+              return NextResponse.json({ results });
             }
-            __typename
           }
         }
-      `
-    };
-
-    const response = await fetch('https://www.booking.com/dml/graphql', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-      },
-      body: JSON.stringify(graphqlQuery)
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      
-      if (data?.data?.searchAutocomplete?.results) {
-        const results = data.data.searchAutocomplete.results.map((item: any) => ({
-          label: item.name,
-          name: item.name,
-          dest_type: item.destType?.toLowerCase() || 'city',
-          type: item.destType?.toLowerCase() || 'city',
-          city_name: item.city,
-          country: item.country,
-          dest_id: item.destId
-        }));
-
-        return NextResponse.json({ results });
+      } catch (endpointError) {
+        console.log(`Endpoint failed: ${endpoint}`);
+        continue;
       }
     }
 
-    // Fallback: return empty to let client use Travelpayouts
+    // All endpoints failed - return empty
     return NextResponse.json({ results: [] });
     
   } catch (error) {
     console.error('Hotel autocomplete error:', error);
-    // Return empty to trigger fallback
     return NextResponse.json({ results: [] });
   }
 }
