@@ -20,32 +20,30 @@ export default function FlightSearchForm() {
     e.preventDefault();
     
     // Build Aviasales white label search URL
-    const origin = formData.originCode || formData.origin;
-    const destination = formData.destinationCode || formData.destination;
-    const departure = formData.departure;
-    const returnDate = formData.return;
+    const origin = (formData.originCode || formData.origin).toUpperCase();
+    const destination = (formData.destinationCode || formData.destination).toUpperCase();
+    const departure = formData.departure.replace(/-/g, '');
+    const returnDate = formData.return ? formData.return.replace(/-/g, '') : '';
     
-    // Aviasales white label URL format
-    // Format: https://book.gotraveled.com/searches/new?origin_iata=NYC&destination_iata=LON&depart_date=2024-03-15&return_date=2024-03-22&adults=1&children=0&infants=0&trip_class=0&marker=250882
-    
-    const params = new URLSearchParams({
-      origin_iata: origin,
-      destination_iata: destination,
-      depart_date: departure,
-      adults: formData.passengers,
-      children: '0',
-      infants: '0',
-      trip_class: '0', // Economy
-      marker: '250882'
-    });
+    // Aviasales white label URL format: /ORIGIN-DESTINATION-DDMMYY-DDMMYY-PASSENGERS
+    // Example: https://book.gotraveled.com/NYC-LON-150324-220324-1
+    let searchPath = `/${origin}-${destination}-${formatDateDDMMYY(formData.departure)}`;
     
     if (formData.tripType === 'roundtrip' && returnDate) {
-      params.append('return_date', returnDate);
+      searchPath += `-${formatDateDDMMYY(formData.return)}`;
     }
     
-    const searchUrl = `https://book.gotraveled.com/searches/new?${params.toString()}`;
+    searchPath += `-${formData.passengers}`;
+    
+    const searchUrl = `https://book.gotraveled.com${searchPath}?marker=250882`;
     
     window.location.href = searchUrl;
+  };
+  
+  // Helper function to format date from YYYY-MM-DD to DDMMYY
+  const formatDateDDMMYY = (dateStr: string) => {
+    const [year, month, day] = dateStr.split('-');
+    return `${day}${month}${year.slice(-2)}`;
   };
 
   return (

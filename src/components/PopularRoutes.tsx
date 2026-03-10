@@ -25,24 +25,19 @@ export default function PopularRoutes() {
     const returnDate = new Date(departure);
     returnDate.setDate(returnDate.getDate() + 7);
 
-    // Format dates for Aviasales white label (YYYY-MM-DD)
-    const departureFormatted = departure.toISOString().split('T')[0];
-    const returnFormatted = returnDate.toISOString().split('T')[0];
+    // Format dates to DDMMYY for Aviasales
+    const formatDate = (date: Date) => {
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const year = String(date.getFullYear()).slice(-2);
+      return `${day}${month}${year}`;
+    };
     
-    // Build proper Aviasales URL parameters
-    const params = new URLSearchParams({
-      origin_iata: route.fromCode,
-      destination_iata: route.toCode,
-      depart_date: departureFormatted,
-      return_date: returnFormatted,
-      adults: '1',
-      children: '0',
-      infants: '0',
-      trip_class: '0',
-      marker: '250882'
-    });
+    const departureFormatted = formatDate(departure);
+    const returnFormatted = formatDate(returnDate);
     
-    const searchUrl = `https://book.gotraveled.com/searches/new?${params.toString()}`;
+    // Aviasales format: /ORIGIN-DESTINATION-DDMMYY-DDMMYY-PASSENGERS
+    const searchUrl = `https://book.gotraveled.com/${route.fromCode}-${route.toCode}-${departureFormatted}-${returnFormatted}-1?marker=250882`;
     
     window.location.href = searchUrl;
   };

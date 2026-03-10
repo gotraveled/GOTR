@@ -16,14 +16,11 @@ export default function HotelSearchForm() {
     e.preventDefault();
     
     // Build Hotellook white label search URL
-    // Redirect to your Travelpayouts white label subdomain for hotels
+    // Format: https://book.gotraveled.com/hotels?city=NewYork&checkIn=2024-03-15&checkOut=2024-03-20&adults=2&marker=250882
     const searchUrl = new URL('https://book.gotraveled.com/hotels');
-    searchUrl.searchParams.append('marker', '250882');
-    searchUrl.searchParams.append('locale', 'en');
-    searchUrl.searchParams.append('currency', 'usd');
     
     if (formData.city) {
-      searchUrl.searchParams.append('query', formData.city);
+      searchUrl.searchParams.append('city', formData.city);
     }
     if (formData.checkIn) {
       searchUrl.searchParams.append('checkIn', formData.checkIn);
@@ -32,6 +29,7 @@ export default function HotelSearchForm() {
       searchUrl.searchParams.append('checkOut', formData.checkOut);
     }
     searchUrl.searchParams.append('adults', formData.guests);
+    searchUrl.searchParams.append('marker', '250882');
     
     window.location.href = searchUrl.toString();
   };

@@ -20,17 +20,13 @@ export default function QuickSearch() {
     switch (activeType) {
       case 'flights':
         if (flightData.origin && flightData.destination && flightData.departure) {
-          const params = new URLSearchParams({
-            origin_iata: flightData.origin.toUpperCase(),
-            destination_iata: flightData.destination.toUpperCase(),
-            depart_date: flightData.departure,
-            adults: '1',
-            children: '0',
-            infants: '0',
-            trip_class: '0',
-            marker: '250882'
-          });
-          window.location.href = `https://book.gotraveled.com/searches/new?${params.toString()}`;
+          // Format date from YYYY-MM-DD to DDMMYY
+          const [year, month, day] = flightData.departure.split('-');
+          const formattedDate = `${day}${month}${year.slice(-2)}`;
+          
+          // Aviasales format: /ORIGIN-DESTINATION-DDMMYY-PASSENGERS (one-way)
+          const searchUrl = `https://book.gotraveled.com/${flightData.origin.toUpperCase()}-${flightData.destination.toUpperCase()}-${formattedDate}-1?marker=250882`;
+          window.location.href = searchUrl;
         }
         break;
       case 'hotels':
