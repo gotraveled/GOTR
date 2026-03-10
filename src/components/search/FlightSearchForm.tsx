@@ -25,15 +25,25 @@ export default function FlightSearchForm() {
     const departure = formData.departure;
     const returnDate = formData.return;
     
-    // Redirect to your Travelpayouts white label subdomain
-    // Format: https://book.gotraveled.com/search/ORIGIN+DEPARTURE+DESTINATION+RETURN+PASSENGERS
-    let searchUrl = `https://book.gotraveled.com/search/${origin}${departure.replace(/-/g, '')}${destination}`;
+    // Aviasales white label URL format
+    // Format: https://book.gotraveled.com/searches/new?origin_iata=NYC&destination_iata=LON&depart_date=2024-03-15&return_date=2024-03-22&adults=1&children=0&infants=0&trip_class=0&marker=250882
+    
+    const params = new URLSearchParams({
+      origin_iata: origin,
+      destination_iata: destination,
+      depart_date: departure,
+      adults: formData.passengers,
+      children: '0',
+      infants: '0',
+      trip_class: '0', // Economy
+      marker: '250882'
+    });
     
     if (formData.tripType === 'roundtrip' && returnDate) {
-      searchUrl += returnDate.replace(/-/g, '');
+      params.append('return_date', returnDate);
     }
     
-    searchUrl += `${formData.passengers}?marker=250882`;
+    const searchUrl = `https://book.gotraveled.com/searches/new?${params.toString()}`;
     
     window.location.href = searchUrl;
   };

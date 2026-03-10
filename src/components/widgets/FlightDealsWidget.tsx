@@ -144,10 +144,19 @@ const FlightDealsWidget = () => {
           
           <button
             onClick={() => {
-              // Redirect to Aviasales white label with proper format
-              const departureFormatted = deal.departure_at.replace(/-/g, '');
-              const returnFormatted = deal.return_at.replace(/-/g, '');
-              const searchUrl = `https://book.gotraveled.com/search/${deal.origin}${departureFormatted}${deal.destination}${returnFormatted}1?marker=250882`;
+              // Redirect to Aviasales white label with proper URL parameters
+              const params = new URLSearchParams({
+                origin_iata: deal.origin,
+                destination_iata: deal.destination,
+                depart_date: deal.departure_at,
+                return_date: deal.return_at,
+                adults: '1',
+                children: '0',
+                infants: '0',
+                trip_class: '0',
+                marker: '250882'
+              });
+              const searchUrl = `https://book.gotraveled.com/searches/new?${params.toString()}`;
               window.location.href = searchUrl;
             }}
             className="block w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white text-center font-bold py-3 px-4 rounded-lg hover:shadow-lg transform hover:scale-105 transition-all"
