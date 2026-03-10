@@ -18,7 +18,7 @@ const Newsletter = () => {
       <h2 className="text-3xl md:text-4xl font-bold mb-4">
         Subscribe to Our Newsletter
       </h2>
-      <p className="text-xl text-blue-100 mb-8">
+      <p className="text-xl text-orange-100 mb-8">
         Get the best travel deals and tips delivered to your inbox
       </p>
 

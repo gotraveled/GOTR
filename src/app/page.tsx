@@ -59,8 +59,13 @@ export default function Home() {
       </section>
 
       {/* Newsletter */}
-      <section className="py-16 bg-primary">
-        <Newsletter />
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600"></div>
+        </div>
+        <div className="relative">
+          <Newsletter />
+        </div>
       </section>
     </div>
   );

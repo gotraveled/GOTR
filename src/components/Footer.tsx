@@ -64,7 +64,7 @@ const Footer = () => {
                 alt="GoTraveled" 
                 width={150} 
                 height={45}
-                className="h-10 w-auto object-contain brightness-0 invert transition-transform group-hover:scale-105"
+                className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
               />
             </Link>
             <p className="text-gray-400 mb-4 leading-relaxed">

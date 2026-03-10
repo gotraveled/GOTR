@@ -19,11 +19,17 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 text-white overflow-hidden">
-      {/* Animated Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-300 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+    <section className="relative text-white overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920&q=80"
+          alt="Travel Background"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-600/90 via-pink-600/85 to-purple-700/90"></div>
       </div>
       
       <div className="relative container-custom py-16 md:py-24">
@@ -32,7 +38,7 @@ const Hero = () => {
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-4 leading-tight">
             Explore the World with Confidence
           </h1>
-          <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
             Compare millions of flights, hotels & car rentals from hundreds of travel sites to find the best deal
           </p>
         </div>
@@ -50,8 +56,8 @@ const Hero = () => {
                     onClick={() => setActiveTab(tab.id)}
                     className={`flex-1 flex items-center justify-center space-x-2 py-5 px-4 font-bold text-sm md:text-base transition-all ${
                       activeTab === tab.id
-                        ? 'bg-white text-blue-600 border-b-4 border-blue-600 -mb-0.5'
-                        : 'bg-gray-50 text-gray-600 hover:bg-white hover:text-blue-500'
+                        ? 'bg-white text-orange-600 border-b-4 border-orange-600 -mb-0.5'
+                        : 'bg-gray-50 text-gray-600 hover:bg-white hover:text-orange-500'
                     }`}
                   >
                     <Icon className="text-xl md:text-2xl" />
@@ -74,15 +80,15 @@ const Hero = () => {
           <div className="mt-8 grid grid-cols-3 gap-4 max-w-3xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
               <p className="text-2xl md:text-3xl font-bold">500+</p>
-              <p className="text-sm text-blue-100">Airlines</p>
+              <p className="text-sm text-orange-100">Airlines</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
               <p className="text-2xl md:text-3xl font-bold">1M+</p>
-              <p className="text-sm text-blue-100">Hotels</p>
+              <p className="text-sm text-orange-100">Hotels</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
               <p className="text-2xl md:text-3xl font-bold">5M+</p>
-              <p className="text-sm text-blue-100">Happy Travelers</p>
+              <p className="text-sm text-orange-100">Happy Travelers</p>
             </div>
           </div>
         </div>
