@@ -16,7 +16,7 @@ export default function AccessoriesPage() {
       price: 24.99,
       rating: 4.7,
       reviews: 28945,
-      image: 'https://images.unsplash.com/photo-1523381140794-a1eef18a37c7?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/81UVrC1O3lL._AC_SL1500_.jpg',
       amazonId: 'B07Y4ZQKLS',
       features: ['6-Piece Set', 'Waterproof', 'Multiple Sizes', 'Durable Zippers']
     },
@@ -26,7 +26,7 @@ export default function AccessoriesPage() {
       price: 16.99,
       rating: 4.6,
       reviews: 15234,
-      image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/71y0BX3a0RL._AC_SL1500_.jpg',
       amazonId: 'B07TD3XDNZ',
       features: ['Clear PVC', 'TSA Compliant', 'Leak-Proof', 'Hanging Hook']
     },
@@ -36,7 +36,7 @@ export default function AccessoriesPage() {
       price: 19.99,
       rating: 4.5,
       reviews: 34567,
-      image: 'https://images.unsplash.com/photo-1614267118556-3f504f6e2614?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/71q5lVoUcQL._AC_SL1500_.jpg',
       amazonId: 'B07Q4SF2G4',
       features: ['Memory Foam', 'Washable Cover', 'Compact', '360° Support']
     },
@@ -46,7 +46,7 @@ export default function AccessoriesPage() {
       price: 9.99,
       rating: 4.6,
       reviews: 12890,
-      image: 'https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/81MLVZH6PiL._AC_SL1500_.jpg',
       amazonId: 'B07F2V8FV5',
       features: ['Stainless Steel', 'Privacy Flap', 'Pack of 4', 'Easy to Spot']
     },
@@ -56,17 +56,17 @@ export default function AccessoriesPage() {
       price: 14.99,
       rating: 4.7,
       reviews: 23456,
-      image: 'https://images.unsplash.com/photo-1591290619762-a5e0ca0b6fd4?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/81VRKkfYMBL._AC_SL1500_.jpg',
       amazonId: 'B07VQYHVKM',
       features: ['Multiple Pockets', 'Waterproof', 'Elastic Loops', 'Compact Design']
     },
     {
       id: 6,
-      name: 'RFID Passport Holder & Wallet',
+      name: 'RFID Passport Holder Wallet',
       price: 12.99,
       rating: 4.8,
       reviews: 45678,
-      image: 'https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/81HXXR7VjPL._AC_SL1500_.jpg',
       amazonId: 'B077ZPXQ54',
       features: ['RFID Blocking', 'Passport + Cards', 'Vegan Leather', 'Slim Design']
     },
@@ -79,7 +79,7 @@ export default function AccessoriesPage() {
           <Link href="/store" className="text-green-100 hover:text-white mb-4 inline-block">
             ← Back to Store
           </Link>
-          <h1 className="text-4xl font-bold mb-4">Travel Accessories</h1>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">Travel Accessories</h1>
           <p className="text-xl text-green-100">
             Essential organizers and accessories to keep your trip smooth and stress-free
           </p>
@@ -99,7 +99,7 @@ export default function AccessoriesPage() {
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="font-bold text-lg text-gray-800 mb-3 line-clamp-2 h-14">{product.name}</h3>
+                  <h3 className="font-bold text-base text-gray-800 mb-3 line-clamp-2 min-h-[2.5rem]">{product.name}</h3>
                   
                   <div className="flex items-center space-x-1 mb-4">
                     {[...Array(5)].map((_, i) => (

@@ -22,12 +22,12 @@ export default function StorePage() {
   const featuredProducts = [
     {
       id: 1,
-      name: 'Samsonite Omni PC Hardside Expandable Luggage',
+      name: 'Samsonite Omni PC Hardside Luggage',
       category: 'Luggage',
       price: 129.99,
       rating: 4.7,
       reviews: 12847,
-      image: 'https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/81EHRGIPyVL._AC_SL1500_.jpg',
       amazonId: 'B01J24H2K0',
       features: ['Expandable', 'Scratch Resistant', '10 Year Warranty']
     },
@@ -38,29 +38,29 @@ export default function StorePage() {
       price: 159.95,
       rating: 4.8,
       reviews: 5623,
-      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/71WLbcfvXHL._AC_SL1500_.jpg',
       amazonId: 'B07VQYHVKM',
       features: ['Carry-on Size', 'Laptop Sleeve', 'Lifetime Guarantee']
     },
     {
       id: 3,
-      name: 'Anker PowerCore 20000mAh Portable Charger',
+      name: 'Anker PowerCore 20000mAh Charger',
       category: 'Electronics',
       price: 49.99,
       rating: 4.6,
       reviews: 89234,
-      image: 'https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/61Py5wY1GDL._AC_SL1500_.jpg',
       amazonId: 'B00X5RV14Y',
       features: ['Fast Charging', 'Dual USB', '20000mAh']
     },
     {
       id: 4,
-      name: 'BAGSMART Travel Packing Cubes 8 Set',
+      name: 'BAGSMART Packing Cubes 8 Set',
       category: 'Accessories',
       price: 29.99,
       rating: 4.7,
       reviews: 15678,
-      image: 'https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/81UVrC1O3lL._AC_SL1500_.jpg',
       amazonId: 'B07Y4ZQKLS',
       features: ['8 Pieces', 'Waterproof', 'Multiple Sizes']
     },
@@ -71,40 +71,40 @@ export default function StorePage() {
       price: 279.00,
       rating: 4.8,
       reviews: 34567,
-      image: 'https://images.unsplash.com/photo-1545127398-14699f92334b?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/51w+9ZPpucL._AC_SL1000_.jpg',
       amazonId: 'B098FKXT8L',
       features: ['Noise Cancelling', '24hr Battery', 'Bluetooth']
     },
     {
       id: 6,
-      name: 'Trtl Pillow - Scientifically Proven Travel Pillow',
+      name: 'Trtl Travel Pillow',
       category: 'Comfort',
       price: 59.99,
       rating: 4.5,
       reviews: 23456,
-      image: 'https://images.unsplash.com/photo-1614267118556-3f504f6e2614?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/71q5lVoUcQL._AC_SL1500_.jpg',
       amazonId: 'B00LB7REFK',
       features: ['Ergonomic', 'Machine Washable', 'Compact']
     },
     {
       id: 7,
-      name: 'Universal Travel Adapter with USB-C',
+      name: 'Universal Travel Adapter USB-C',
       category: 'Electronics',
       price: 24.99,
       rating: 4.6,
       reviews: 45123,
-      image: 'https://images.unsplash.com/photo-1591290619762-a5e0ca0b6fd4?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/61vC96c6OzL._AC_SL1500_.jpg',
       amazonId: 'B07VLLBNN4',
       features: ['150+ Countries', '4 USB Ports', 'Fast Charging']
     },
     {
       id: 8,
-      name: 'Compression Socks for Travel (3 Pairs)',
+      name: 'Compression Socks Travel (3 Pairs)',
       category: 'Health',
       price: 19.99,
       rating: 4.6,
       reviews: 8934,
-      image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/81YqCZJbIvL._AC_SL1500_.jpg',
       amazonId: 'B01LXO7T3W',
       features: ['Improve Circulation', 'Unisex', 'Graduated Compression']
     },
@@ -184,7 +184,7 @@ export default function StorePage() {
                 
                 <div className="p-4">
                   <div className="text-xs text-blue-600 font-semibold mb-1">{product.category}</div>
-                  <h3 className="font-bold text-gray-800 mb-2 line-clamp-2 h-12">{product.name}</h3>
+                  <h3 className="font-bold text-sm text-gray-800 mb-2 line-clamp-2 min-h-[2.5rem]">{product.name}</h3>
                   
                   <div className="flex items-center space-x-1 mb-3">
                     {[...Array(5)].map((_, i) => (

@@ -12,61 +12,61 @@ export default function LuggagePage() {
   const products = [
     {
       id: 1,
-      name: 'Samsonite Omni PC Hardside Expandable Luggage with Spinner Wheels',
+      name: 'Samsonite Omni PC Hardside Luggage',
       price: 129.99,
       rating: 4.7,
       reviews: 12847,
-      image: 'https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/81EHRGIPyVL._AC_SL1500_.jpg',
       amazonId: 'B01J24H2K0',
       features: ['Scratch Resistant', 'Expandable', '10 Year Warranty', 'Spinner Wheels']
     },
     {
       id: 2,
-      name: 'Travelpro Maxlite 5 Softside Expandable Spinner Wheel Luggage',
+      name: 'Travelpro Maxlite 5 Softside Luggage',
       price: 89.99,
       rating: 4.6,
       reviews: 8234,
-      image: 'https://images.unsplash.com/photo-1564514024-1dc4b5cd8e2d?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/81rHGBZe5OL._AC_SL1500_.jpg',
       amazonId: 'B01MUC4OB9',
       features: ['Lightweight', 'Expandable', 'USB Port', 'Water Resistant']
     },
     {
       id: 3,
-      name: 'Away The Carry-On - Polycarbonate Hardside Luggage',
-      price: 225.00,
-      rating: 4.8,
+      name: 'Coolife Hardside Luggage Set',
+      price: 169.99,
+      rating: 4.5,
       reviews: 15623,
-      image: 'https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?w=400&q=80',
-      amazonId: 'B07JFVKH3L',
-      features: ['TSA Approved', 'Compression System', 'Lifetime Warranty', '360° Wheels']
+      image: 'https://m.media-amazon.com/images/I/81lVHjP5W2L._AC_SL1500_.jpg',
+      amazonId: 'B07VLLBNN4',
+      features: ['3 Piece Set', 'TSA Lock', 'Spinner Wheels', 'Durable']
     },
     {
       id: 4,
-      name: 'Rockland Melbourne Hardside Expandable Spinner Wheel Luggage',
+      name: 'Rockland Melbourne Hardside Luggage',
       price: 59.99,
       rating: 4.4,
       reviews: 23456,
-      image: 'https://images.unsplash.com/photo-1591130201693-c34fc78d9f3f?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/81jOCRaBmkL._AC_SL1500_.jpg',
       amazonId: 'B00F9S8FOO',
       features: ['Budget Friendly', 'Multiple Colors', 'Expandable', 'Scratch Resistant']
     },
     {
       id: 5,
-      name: 'Delsey Paris Helium Aero Hardside Expandable Luggage with Spinner Wheels',
+      name: 'Delsey Paris Helium Aero Hardside',
       price: 149.99,
       rating: 4.7,
       reviews: 9876,
-      image: 'https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/71FJY8tTF0L._AC_SL1500_.jpg',
       amazonId: 'B01LZMVKWH',
       features: ['Expandable', 'TSA Lock', '10 Year Warranty', 'Lightweight']
     },
     {
       id: 6,
-      name: 'American Tourister Moonlight Hardside Expandable Luggage',
+      name: 'American Tourister Moonlight Luggage',
       price: 79.99,
       rating: 4.5,
       reviews: 17890,
-      image: 'https://images.unsplash.com/photo-1591130201693-c34fc78d9f3f?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/81RqfFP7WxL._AC_SL1500_.jpg',
       amazonId: 'B078RZ9JXL',
       features: ['Value Pick', 'Durable', 'Spinner Wheels', 'Multiple Sizes']
     },
@@ -80,7 +80,7 @@ export default function LuggagePage() {
           <Link href="/store" className="text-blue-100 hover:text-white mb-4 inline-block">
             ← Back to Store
           </Link>
-          <h1 className="text-4xl font-bold mb-4">Luggage & Suitcases</h1>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">Luggage & Suitcases</h1>
           <p className="text-xl text-blue-100">
             Premium luggage from top brands - durable, stylish, and travel-tested
           </p>
@@ -129,7 +129,7 @@ export default function LuggagePage() {
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="font-bold text-lg text-gray-800 mb-3 line-clamp-2 h-14">{product.name}</h3>
+                  <h3 className="font-bold text-base text-gray-800 mb-3 line-clamp-2 min-h-[2.5rem]">{product.name}</h3>
                   
                   <div className="flex items-center space-x-1 mb-4">
                     {[...Array(5)].map((_, i) => (

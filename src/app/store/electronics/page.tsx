@@ -12,61 +12,61 @@ export default function ElectronicsPage() {
   const products = [
     {
       id: 1,
-      name: 'Anker PowerCore 20000mAh Portable Charger',
+      name: 'Anker PowerCore 20000mAh Charger',
       price: 49.99,
       rating: 4.6,
       reviews: 89234,
-      image: 'https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/61Py5wY1GDL._AC_SL1500_.jpg',
       amazonId: 'B00X5RV14Y',
       features: ['20000mAh Capacity', 'Fast Charging', 'Dual USB Ports', 'Compact Design']
     },
     {
       id: 2,
-      name: 'Universal Travel Adapter with 4 USB Ports',
+      name: 'Universal Travel Adapter USB',
       price: 24.99,
       rating: 4.6,
       reviews: 45123,
-      image: 'https://images.unsplash.com/photo-1591290619762-a5e0ca0b6fd4?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/61vC96c6OzL._AC_SL1500_.jpg',
       amazonId: 'B07VLLBNN4',
       features: ['150+ Countries', '4 USB Ports', 'Type-C Fast Charge', 'Safety Certified']
     },
     {
       id: 3,
-      name: 'Bose QuietComfort 45 Wireless Headphones',
+      name: 'Bose QuietComfort 45 Headphones',
       price: 279.00,
       rating: 4.8,
       reviews: 34567,
-      image: 'https://images.unsplash.com/photo-1545127398-14699f92334b?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/51w+9ZPpucL._AC_SL1000_.jpg',
       amazonId: 'B098FKXT8L',
       features: ['Noise Cancelling', '24hr Battery', 'Bluetooth 5.1', 'Premium Sound']
     },
     {
       id: 4,
-      name: 'Apple AirTag 4 Pack - GPS Tracker',
+      name: 'Apple AirTag 4 Pack GPS Tracker',
       price: 99.00,
       rating: 4.7,
       reviews: 67890,
-      image: 'https://images.unsplash.com/photo-1635514569146-9a9607ecf303?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/71b7u-ittDL._AC_SL1500_.jpg',
       amazonId: 'B0932QJ2JZ',
       features: ['Track Luggage', 'Find My Network', 'Replaceable Battery', 'Water Resistant']
     },
     {
       id: 5,
-      name: 'GoPro HERO11 Black Action Camera',
+      name: 'GoPro HERO11 Black Camera',
       price: 349.99,
       rating: 4.7,
       reviews: 12345,
-      image: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/61YM9sQ9LsL._AC_SL1500_.jpg',
       amazonId: 'B0B9SMTV9K',
       features: ['5.3K Video', 'Waterproof', 'Image Stabilization', 'Voice Control']
     },
     {
       id: 6,
-      name: 'Kindle Paperwhite E-Reader (16 GB)',
+      name: 'Kindle Paperwhite E-Reader 16GB',
       price: 139.99,
       rating: 4.8,
       reviews: 156789,
-      image: 'https://images.unsplash.com/photo-1592496001020-d31bd830651f?w=400&q=80',
+      image: 'https://m.media-amazon.com/images/I/51QCk82iGcL._AC_SL1000_.jpg',
       amazonId: 'B08KTZ8249',
       features: ['Waterproof', 'Weeks Battery', 'Adjustable Light', '16GB Storage']
     },
@@ -79,7 +79,7 @@ export default function ElectronicsPage() {
           <Link href="/store" className="text-purple-100 hover:text-white mb-4 inline-block">
             ← Back to Store
           </Link>
-          <h1 className="text-4xl font-bold mb-4">Travel Electronics & Gadgets</h1>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">Travel Electronics & Gadgets</h1>
           <p className="text-xl text-purple-100">
             Essential tech gear to stay charged, connected, and entertained on the go
           </p>
@@ -99,7 +99,7 @@ export default function ElectronicsPage() {
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="font-bold text-lg text-gray-800 mb-3 line-clamp-2 h-14">{product.name}</h3>
+                  <h3 className="font-bold text-base text-gray-800 mb-3 line-clamp-2 min-h-[2.5rem]">{product.name}</h3>
                   
                   <div className="flex items-center space-x-1 mb-4">
                     {[...Array(5)].map((_, i) => (
