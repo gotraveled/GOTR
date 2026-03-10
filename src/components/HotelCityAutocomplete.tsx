@@ -1,13 +1,14 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { FaMapMarkerAlt, FaHotel } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaHotel, FaCity } from 'react-icons/fa';
 
 interface SearchResult {
   name: string;
-  type: string; // 'city', 'hotel', 'region'
+  type: string;
   country: string;
   displayName: string;
+  city?: string;
 }
 
 interface Props {
@@ -42,7 +43,7 @@ export default function HotelCityAutocomplete({ value, onChange, placeholder, la
   }, []);
 
   const searchDestinations = async (searchTerm: string) => {
-    if (searchTerm.length < 2) {
+    if (searchTerm.length < 3) {
       setSuggestions([]);
       return;
     }
@@ -50,17 +51,48 @@ export default function HotelCityAutocomplete({ value, onChange, placeholder, la
     setIsLoading(true);
 
     try {
-      // Using Travelpayouts Places API which includes hotels, cities, and landmarks
+      // Try using Booking.com destinations API
       const response = await fetch(
-        `https://autocomplete.travelpayouts.com/places2?term=${encodeURIComponent(searchTerm)}&locale=en&types[]=city&types[]=hotel`
+        `/api/hotel-autocomplete?query=${encodeURIComponent(searchTerm)}`
       );
       
-      const data = await response.json();
+      if (response.ok) {
+        const data = await response.json();
+        
+        if (data && data.results && Array.isArray(data.results)) {
+          const results: SearchResult[] = data.results.slice(0, 15).map((item: any) => {
+            const isHotel = item.dest_type === 'hotel' || item.type === 'hotel';
+            const displayName = isHotel && item.city_name 
+              ? `${item.label || item.name} (${item.city_name})`
+              : (item.label || item.name);
+            
+            return {
+              name: item.label || item.name || '',
+              type: isHotel ? 'hotel' : 'city',
+              country: item.country || '',
+              city: item.city_name || '',
+              displayName: displayName
+            };
+          });
+          
+          setSuggestions(results);
+          setShowSuggestions(true);
+          setIsLoading(false);
+          return;
+        }
+      }
       
-      if (data && Array.isArray(data)) {
-        const results: SearchResult[] = data.slice(0, 15).map((item: any) => ({
+      // Fallback: Search cities with Travelpayouts
+      const cityResponse = await fetch(
+        `https://autocomplete.travelpayouts.com/places2?term=${encodeURIComponent(searchTerm)}&locale=en&types[]=city`
+      );
+      
+      const cityData = await cityResponse.json();
+      
+      if (cityData && Array.isArray(cityData)) {
+        const results: SearchResult[] = cityData.slice(0, 10).map((item: any) => ({
           name: item.name || item.city_name || '',
-          type: item.type || 'city',
+          type: 'city',
           country: item.country_name || item.country || '',
           displayName: item.name || item.city_name || ''
         }));
@@ -69,7 +101,7 @@ export default function HotelCityAutocomplete({ value, onChange, placeholder, la
         setShowSuggestions(true);
       }
     } catch (error) {
-      console.error('Destination search error:', error);
+      console.error('Hotel search error:', error);
       setSuggestions([]);
     } finally {
       setIsLoading(false);
@@ -116,7 +148,7 @@ export default function HotelCityAutocomplete({ value, onChange, placeholder, la
 
   const getIcon = (type: string) => {
     if (type === 'hotel') return <FaHotel className="text-blue-600" />;
-    return <FaMapMarkerAlt className="text-green-600" />;
+    return <FaCity className="text-green-600" />;
   };
 
   const getTypeLabel = (type: string) => {
@@ -163,16 +195,14 @@ export default function HotelCityAutocomplete({ value, onChange, placeholder, la
                 index === selectedIndex ? 'bg-blue-50' : ''
               }`}
             >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  {getIcon(result.type)}
-                  <div>
-                    <div className="font-semibold text-gray-800">
-                      {result.displayName}
-                    </div>
-                    <div className="text-xs text-gray-500">
-                      {getTypeLabel(result.type)} • {result.country}
-                    </div>
+              <div className="flex items-center gap-3">
+                {getIcon(result.type)}
+                <div>
+                  <div className="font-semibold text-gray-800">
+                    {result.displayName}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    {getTypeLabel(result.type)}{result.country && ` • ${result.country}`}
                   </div>
                 </div>
               </div>
@@ -181,10 +211,10 @@ export default function HotelCityAutocomplete({ value, onChange, placeholder, la
         </div>
       )}
       
-      {showSuggestions && suggestions.length === 0 && !isLoading && inputValue.length >= 2 && (
+      {showSuggestions && suggestions.length === 0 && !isLoading && inputValue.length >= 3 && (
         <div className="absolute z-50 w-full mt-1 bg-white border-2 border-gray-200 rounded-lg shadow-lg p-4">
           <p className="text-gray-600 text-sm">💡 <strong>Tip:</strong> Type any hotel name, city, or address.</p>
-          <p className="text-gray-500 text-xs mt-1">Booking.com will search for it when you submit.</p>
+          <p className="text-gray-500 text-xs mt-1">Be specific: "Oberoi Mumbai" or "Oberoi Udaivilas Udaipur"</p>
         </div>
       )}
     </div>
