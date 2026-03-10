@@ -20,23 +20,23 @@ export default function FlightSearchForm() {
     e.preventDefault();
     
     // Format: OriginCode + DepartureDate(DDMM) + DestinationCode + ReturnDate(DDMM) + Passengers
-    // Example: IXC2103LHR22041 = IXC on 21/03 to LHR return 22/04, 1 passenger
+    // Example: DEL1803YVR28031 = DEL on 18/03 to YVR return 28/03, 1 passenger
     
     const originCode = formData.originCode || formData.origin.substring(0, 3).toUpperCase();
     const destCode = formData.destinationCode || formData.destination.substring(0, 3).toUpperCase();
     
-    // Parse departure date
-    const depDate = new Date(formData.departure);
-    const depDay = String(depDate.getDate()).padStart(2, '0');
-    const depMonth = String(depDate.getMonth() + 1).padStart(2, '0');
+    // Parse departure date from YYYY-MM-DD format
+    const [depYear, depMonthStr, depDayStr] = formData.departure.split('-');
+    const depDay = depDayStr;
+    const depMonth = depMonthStr;
     
     let flightSearchCode = `${originCode}${depDay}${depMonth}${destCode}`;
     
     // Add return date for round trip
     if (formData.tripType === 'roundtrip' && formData.return) {
-      const retDate = new Date(formData.return);
-      const retDay = String(retDate.getDate()).padStart(2, '0');
-      const retMonth = String(retDate.getMonth() + 1).padStart(2, '0');
+      const [retYear, retMonthStr, retDayStr] = formData.return.split('-');
+      const retDay = retDayStr;
+      const retMonth = retMonthStr;
       flightSearchCode += `${retDay}${retMonth}`;
     }
     

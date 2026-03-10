@@ -19,10 +19,8 @@ export default function QuickSearch() {
     
     switch (activeType) {
       case 'flights': {
-        // Build flightSearch code
-        const depDate = new Date(flightData.departure);
-        const depDay = String(depDate.getDate()).padStart(2, '0');
-        const depMonth = String(depDate.getMonth() + 1).padStart(2, '0');
+        // Build flightSearch code - parse date from YYYY-MM-DD
+        const [depYear, depMonth, depDay] = flightData.departure.split('-');
         
         // For one-way, just use departure date
         const flightSearchCode = `${flightData.origin.toUpperCase()}${depDay}${depMonth}${flightData.destination.toUpperCase()}1`;
