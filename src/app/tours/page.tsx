@@ -1,14 +1,18 @@
-import type { Metadata } from 'next';
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-
-export const metadata: Metadata = {
-  title: 'Tours & Activities - Book Experiences Worldwide | GoTraveled',
-  description: 'Discover and book amazing tours, activities, and experiences around the world. From city tours to adventure activities.',
-  keywords: 'tours, activities, experiences, sightseeing, adventure tours, city tours',
-};
+import GetYourGuideWidget from '@/components/widgets/GetYourGuideWidget';
+import { useEffect } from 'react';
 
 export default function ToursPage() {
+  useEffect(() => {
+    document.title = 'Tours & Activities - Book Experiences Worldwide | GoTraveled';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Discover and book amazing tours, activities, and experiences around the world. From city tours to adventure activities.');
+    }
+  }, []);
   const categories = [
     {
       name: 'City Tours',
@@ -336,6 +340,21 @@ export default function ToursPage() {
               <p className="text-gray-600">
                 Customer support whenever you need it
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* GetYourGuide Widget - Activities & Tours */}
+      <section className="py-16 bg-white">
+        <div className="container-custom">
+          <h2 className="section-title text-center">Explore Tours & Activities Worldwide</h2>
+          <p className="section-subtitle text-center mb-8">
+            Discover thousands of tours, activities, and experiences powered by GetYourGuide
+          </p>
+          <div className="max-w-7xl mx-auto">
+            <div className="bg-gray-50 rounded-xl shadow-lg p-6">
+              <GetYourGuideWidget />
             </div>
           </div>
         </div>

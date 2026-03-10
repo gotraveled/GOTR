@@ -1,13 +1,23 @@
-import type { Metadata } from 'next';
-import HotelWidget from '@/components/widgets/HotelWidget';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Hotel Booking - Find & Compare Best Hotel Deals | GoTraveled',
-  description: 'Search and book hotels worldwide. Compare prices from top booking sites and find the perfect accommodation for your trip.',
-  keywords: 'hotel booking, cheap hotels, hotel deals, accommodation, resorts',
-};
+import HotelWidget from '@/components/widgets/HotelWidget';
+import { useEffect } from 'react';
 
 export default function HotelsPage() {
+  useEffect(() => {
+    document.title = 'Hotel Booking - Find & Compare Best Hotel Deals | GoTraveled';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Search and book hotels worldwide. Compare prices from top booking sites and find the perfect accommodation for your trip.');
+    }
+  }, []);
+
+  const scrollToSearch = () => {
+    const searchSection = document.getElementById('search-section');
+    if (searchSection) {
+      searchSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
   const topCities = [
     {
       city: 'Dubai',
@@ -56,7 +66,7 @@ export default function HotelsPage() {
       </section>
 
       {/* Hotel Search Widget */}
-      <section className="py-16 bg-gray-50">
+      <section id="search-section" className="py-16 bg-gray-50">
         <div className="container-custom">
           <div className="bg-white rounded-xl shadow-lg p-8">
             <HotelWidget />
@@ -101,7 +111,7 @@ export default function HotelsPage() {
               <p className="text-gray-600 mb-6">
                 Comfortable stays at affordable prices for budget-conscious travelers
               </p>
-              <button className="btn-primary">Search Budget Hotels</button>
+              <button onClick={scrollToSearch} className="btn-primary">Search Budget Hotels</button>
             </div>
 
             <div className="card p-8 text-center">
@@ -110,7 +120,7 @@ export default function HotelsPage() {
               <p className="text-gray-600 mb-6">
                 Perfect balance of comfort, amenities, and value for money
               </p>
-              <button className="btn-primary">Search Mid-Range</button>
+              <button onClick={scrollToSearch} className="btn-primary">Search Mid-Range</button>
             </div>
 
             <div className="card p-8 text-center">
@@ -119,7 +129,7 @@ export default function HotelsPage() {
               <p className="text-gray-600 mb-6">
                 Premium accommodations with world-class service and amenities
               </p>
-              <button className="btn-primary">Search Luxury Hotels</button>
+              <button onClick={scrollToSearch} className="btn-primary">Search Luxury Hotels</button>
             </div>
           </div>
         </div>
