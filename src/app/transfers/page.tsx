@@ -1,15 +1,25 @@
-import type { Metadata } from 'next';
+'use client';
+
 import TaxiWidget from '@/components/widgets/TaxiWidget';
 import TransferBookingWidget from '@/components/widgets/TransferBookingWidget';
 import TransferReviewsWidget from '@/components/widgets/TransferReviewsWidget';
-
-export const metadata: Metadata = {
-  title: 'Airport Transfers - Book Reliable Airport Taxi Service | GoTraveled',
-  description: 'Book reliable airport transfers and taxi services worldwide. Pre-book your airport pickup and enjoy hassle-free transportation.',
-  keywords: 'airport transfer, airport taxi, airport shuttle, private transfer, airport pickup',
-};
+import { useEffect } from 'react';
 
 export default function TransfersPage() {
+  useEffect(() => {
+    document.title = 'Airport Transfers - Book Reliable Airport Taxi Service | GoTraveled';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Book reliable airport transfers and taxi services worldwide. Pre-book your airport pickup and enjoy hassle-free transportation.');
+    }
+  }, []);
+
+  const scrollToBooking = () => {
+    const bookingSection = document.getElementById('booking-section');
+    if (bookingSection) {
+      bookingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
   const popularRoutes = [
     { airport: 'Dubai International', city: 'Dubai Downtown', price: '$25' },
     { airport: 'Heathrow Airport', city: 'London City Center', price: '$45' },
@@ -34,7 +44,7 @@ export default function TransfersPage() {
       </section>
 
       {/* Transfer Search Widget */}
-      <section className="py-16 bg-gray-50">
+      <section id="booking-section" className="py-16 bg-gray-50">
         <div className="container-custom">
           <div className="bg-white rounded-xl shadow-lg p-8">
             <h2 className="text-2xl font-bold mb-6 text-center">Book Your Airport Transfer</h2>
@@ -102,7 +112,7 @@ export default function TransfersPage() {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-2xl font-bold text-primary">{route.price}</span>
-                  <button className="btn-primary">Book Now</button>
+                  <button onClick={scrollToBooking} className="btn-primary">Book Now</button>
                 </div>
               </div>
             ))}
@@ -114,7 +124,14 @@ export default function TransfersPage() {
       <section className="py-16 bg-white">
         <div className="container-custom">
           <h2 className="section-title text-center">Available Transfers</h2>
-          <TransferBookingWidget />
+          <p className="section-subtitle text-center mb-8">
+            Browse and book from thousands of transfer options worldwide
+          </p>
+          <div className="max-w-6xl mx-auto">
+            <div className="bg-gray-50 rounded-xl shadow-lg p-6">
+              <TransferBookingWidget />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -158,10 +175,14 @@ export default function TransfersPage() {
       <section className="py-16 bg-white">
         <div className="container-custom">
           <h2 className="section-title text-center">Customer Reviews</h2>
-          <p className="section-subtitle text-center">
+          <p className="section-subtitle text-center mb-8">
             See what our customers say about their transfer experience
           </p>
-          <TransferReviewsWidget />
+          <div className="max-w-6xl mx-auto">
+            <div className="bg-gray-50 rounded-xl shadow-lg p-6">
+              <TransferReviewsWidget />
+            </div>
+          </div>
         </div>
       </section>
 

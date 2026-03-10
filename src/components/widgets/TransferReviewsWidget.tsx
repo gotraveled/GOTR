@@ -22,11 +22,22 @@ const TransferReviewsWidget = () => {
   }, []);
 
   return (
-    <div 
-      ref={widgetRef}
-      className="min-h-[300px] flex items-center justify-center"
-    >
-      <div className="text-gray-500">Loading reviews...</div>
+    <div className="w-full">
+      <div 
+        ref={widgetRef}
+        className="min-h-[400px] w-full overflow-hidden"
+        style={{
+          minHeight: '400px',
+          width: '100%',
+        }}
+      >
+        <div className="flex items-center justify-center h-[400px]">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto mb-4"></div>
+            <p className="text-gray-500">Loading customer reviews...</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
