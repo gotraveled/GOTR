@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import FlightSearchForm from '@/components/search/FlightSearchForm';
 import FlightDealsWidget from '@/components/widgets/FlightDealsWidget';
 import PopularRoutes from '@/components/PopularRoutes';
+import TravelInsuranceWidget from '@/components/widgets/TravelInsuranceWidget';
 
 export const metadata: Metadata = {
   title: 'Cheap Flights - Compare & Book Airline Tickets | GoTraveled',
@@ -116,6 +118,29 @@ export default function FlightsPage() {
                 money, even with added transportation costs.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Travel Insurance */}
+      <section className="py-16 bg-white">
+        <div className="container-custom">
+          <div className="text-center mb-8">
+            <h2 className="section-title">Protect Your Trip</h2>
+            <p className="section-subtitle">
+              Get comprehensive travel insurance for peace of mind
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <TravelInsuranceWidget />
+          </div>
+          <div className="text-center mt-6">
+            <Link 
+              href="/insurance" 
+              className="text-primary font-semibold hover:underline"
+            >
+              Learn more about travel insurance →
+            </Link>
           </div>
         </div>
       </section>

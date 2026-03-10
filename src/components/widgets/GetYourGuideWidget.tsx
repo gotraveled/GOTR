@@ -7,9 +7,22 @@ interface GetYourGuideWidgetProps {
   partnerId?: string;
 }
 
+/**
+ * GetYourGuide Affiliate Widget
+ * 
+ * TODO - AFTER GETYOURGUIDE APPROVAL:
+ * 1. Apply at: https://affiliate.getyourguide.com/
+ * 2. Get your Partner ID after approval
+ * 3. Replace the partnerId default value below with your actual Partner ID
+ * 4. Update the widget configuration with your affiliate tracking parameters
+ * 
+ * Current Status: Using placeholder Partner ID (250882 - Travelpayouts)
+ * After approval, replace with your GetYourGuide Partner ID
+ */
+
 const GetYourGuideWidget: React.FC<GetYourGuideWidgetProps> = ({ 
   location = '',
-  partnerId = '250882' 
+  partnerId = '250882' // TODO: Replace with your GetYourGuide Partner ID after approval
 }) => {
   const widgetRef = useRef<HTMLDivElement>(null);
 
