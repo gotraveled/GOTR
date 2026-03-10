@@ -57,7 +57,8 @@ export default function RealCityAutocomplete({ value, onChange, placeholder, lab
       const data = await response.json();
       
       if (data && Array.isArray(data)) {
-        const cities: City[] = data.slice(0, 10).map((item: any) => ({
+        // Show more results - up to 20 for better worldwide coverage
+        const cities: City[] = data.slice(0, 20).map((item: any) => ({
           id: item.id || item.code || '',
           name: item.name || item.city_name || '',
           country: item.country_name || item.country || ''

@@ -58,7 +58,8 @@ export default function RealAirportAutocomplete({ value, onChange, placeholder, 
       const data = await response.json();
       
       if (data && Array.isArray(data)) {
-        const airports: Airport[] = data.slice(0, 10).map((item: any) => ({
+        // Show more results - up to 20 for better worldwide coverage
+        const airports: Airport[] = data.slice(0, 20).map((item: any) => ({
           code: item.code || item.iata || '',
           name: item.name || '',
           city: item.city_name || item.city || '',
