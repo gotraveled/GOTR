@@ -76,7 +76,7 @@ function ThankYouContent() {
 
         <div className="mt-12 pt-8 border-t border-gray-200">
           <h3 className="font-bold mb-4 text-gray-800">Need Immediate Assistance?</h3>
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 gap-6 max-w-md mx-auto">
             <div>
               <div className="text-2xl mb-2">📞</div>
               <p className="text-sm font-semibold text-gray-800">Call Us</p>
@@ -90,13 +90,6 @@ function ThankYouContent() {
               <a href="mailto:info@gotraveled.com" className="text-sm text-primary hover:underline">
                 info@gotraveled.com
               </a>
-            </div>
-            <div>
-              <div className="text-2xl mb-2">📍</div>
-              <p className="text-sm font-semibold text-gray-800">Visit Us</p>
-              <p className="text-sm text-gray-600">
-                Rancho Cucamonga, CA
-              </p>
             </div>
           </div>
         </div>

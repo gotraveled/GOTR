@@ -172,8 +172,8 @@ Sent from GoTraveled Contact Form
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <a href="mailto:info@gotraveled.com" className="text-gray-700 hover:text-primary">info@gotraveled.com</a><br />
-                    <a href="mailto:vijay0262@gmail.com" className="text-gray-700 hover:text-primary">vijay0262@gmail.com</a>
+                    <a href="mailto:info@gotraveled.com" className="text-gray-700 hover:text-primary">info@gotraveled.com</a>
+                    <p className="text-sm text-gray-500">We typically respond within 24 hours</p>
                   </div>
                 </div>
 
@@ -193,10 +193,9 @@ Sent from GoTraveled Contact Form
                     <FaMapMarkerAlt className="text-xl" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Address</h3>
+                    <h3 className="font-semibold mb-1">Location</h3>
                     <p className="text-gray-700">
-                      7430 Pasito Ave<br />
-                      Rancho Cucamonga, CA 91730<br />
+                      Rancho Cucamonga, CA<br />
                       United States
                     </p>
                   </div>

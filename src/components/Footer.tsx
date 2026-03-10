@@ -67,16 +67,10 @@ const Footer = () => {
                 className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
               />
             </Link>
-            <p className="text-gray-400 mb-4 leading-relaxed">
+            <p className="text-gray-400 mb-6 leading-relaxed">
               Your trusted travel companion for finding the best deals on flights, hotels, 
               car rentals, and transfers worldwide. Save time and money with GoTraveled.
             </p>
-            <div className="text-gray-400 text-sm mb-4">
-              <p className="font-semibold text-white mb-1">Contact Us:</p>
-              <p>📧 <a href="mailto:info@gotraveled.com" className="hover:text-primary">info@gotraveled.com</a></p>
-              <p>📞 <a href="tel:+18009370173" className="hover:text-primary">1-800-937-0173</a></p>
-              <p>📍 7430 Pasito Ave, Rancho Cucamonga, CA 91730</p>
-            </div>
             <div className="flex space-x-3">
               <a href="#" className="p-2 bg-gray-800 rounded-lg text-gray-400 hover:bg-blue-600 hover:text-white transition-all">
                 <FaFacebook className="text-lg" />

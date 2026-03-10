@@ -97,7 +97,11 @@ export default function HotelsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {topCities.map((destination) => (
-              <div key={destination.city} className="card group cursor-pointer">
+              <div 
+                key={destination.city} 
+                onClick={scrollToSearch}
+                className="card group cursor-pointer hover:shadow-2xl transition-all"
+              >
                 <div 
                   className="h-48 bg-cover bg-center group-hover:scale-105 transition-transform duration-300"
                   style={{ backgroundImage: `url(${destination.image})` }}

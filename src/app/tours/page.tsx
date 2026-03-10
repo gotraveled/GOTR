@@ -193,7 +193,7 @@ export default function ToursPage() {
             <Link href="/tours/domestic" className="group">
               <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all">
                 <div className="relative h-40">
-                  <Image src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09f?w=400&q=80" alt="Rajasthan" fill className="object-cover group-hover:scale-110 transition-transform" />
+                  <Image src="https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=400&q=80" alt="Rajasthan" fill className="object-cover group-hover:scale-110 transition-transform" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                     <h3 className="text-lg font-bold">Rajasthan</h3>
@@ -256,7 +256,7 @@ export default function ToursPage() {
             <Link href="/tours/domestic/golden-triangle" className="group">
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all">
                 <div className="relative h-56">
-                  <Image src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09f?w=600&q=80" alt="Golden Triangle" fill className="object-cover group-hover:scale-110 transition-transform" />
+                  <Image src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80" alt="Golden Triangle" fill className="object-cover group-hover:scale-110 transition-transform" />
                   <div className="absolute top-3 right-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold">Bestseller</div>
                 </div>
                 <div className="p-5">
