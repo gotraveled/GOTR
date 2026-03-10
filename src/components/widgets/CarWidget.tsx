@@ -17,21 +17,33 @@ const CarWidget = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Build DiscoverCars affiliate URL with your marker
+    // Build DiscoverCars affiliate URL with proper parameters
+    // Format: https://www.discovercars.com/?a_aid=250882&from=LOCATION&from_date=YYYY-MM-DD&from_time=HH:MM&to_date=YYYY-MM-DD&to_time=HH:MM
     const searchUrl = new URL('https://www.discovercars.com/');
     searchUrl.searchParams.append('a_aid', '250882');
     
+    // Add pickup location
     if (formData.pickup) {
-      searchUrl.searchParams.append('pick_up', formData.pickup);
+      searchUrl.searchParams.append('from', formData.pickup);
     }
-    if (formData.dropoff) {
-      searchUrl.searchParams.append('drop_off', formData.dropoff);
-    }
+    
+    // Parse pickup datetime (format: YYYY-MM-DDTHH:MM)
     if (formData.pickupDate) {
-      searchUrl.searchParams.append('pick_up_date', formData.pickupDate);
+      const [pickupDate, pickupTime] = formData.pickupDate.split('T');
+      searchUrl.searchParams.append('from_date', pickupDate);
+      searchUrl.searchParams.append('from_time', pickupTime);
     }
+    
+    // Parse dropoff datetime
     if (formData.dropoffDate) {
-      searchUrl.searchParams.append('drop_off_date', formData.dropoffDate);
+      const [dropoffDate, dropoffTime] = formData.dropoffDate.split('T');
+      searchUrl.searchParams.append('to_date', dropoffDate);
+      searchUrl.searchParams.append('to_time', dropoffTime);
+    }
+    
+    // Add dropoff location if different from pickup
+    if (formData.dropoff && formData.dropoff !== formData.pickup) {
+      searchUrl.searchParams.append('to', formData.dropoff);
     }
     
     window.location.href = searchUrl.toString();

@@ -43,7 +43,7 @@ export default function HotelCityAutocomplete({ value, onChange, placeholder, la
   }, []);
 
   const searchDestinations = async (searchTerm: string) => {
-    if (searchTerm.length < 3) {
+    if (searchTerm.length < 2) {
       setSuggestions([]);
       return;
     }
@@ -51,58 +51,33 @@ export default function HotelCityAutocomplete({ value, onChange, placeholder, la
     setIsLoading(true);
 
     try {
-      // Try using Booking.com destinations API
-      const response = await fetch(
-        `/api/hotel-autocomplete?query=${encodeURIComponent(searchTerm)}`
-      );
-      
-      if (response.ok) {
-        const data = await response.json();
-        
-        if (data && data.results && Array.isArray(data.results)) {
-          const results: SearchResult[] = data.results.slice(0, 15).map((item: any) => {
-            const isHotel = item.dest_type === 'hotel' || item.type === 'hotel';
-            const displayName = isHotel && item.city_name 
-              ? `${item.label || item.name} (${item.city_name})`
-              : (item.label || item.name);
-            
-            return {
-              name: item.label || item.name || '',
-              type: isHotel ? 'hotel' : 'city',
-              country: item.country || '',
-              city: item.city_name || '',
-              displayName: displayName
-            };
-          });
-          
-          setSuggestions(results);
-          setShowSuggestions(true);
-          setIsLoading(false);
-          return;
-        }
-      }
-      
-      // Fallback: Search cities with Travelpayouts
+      // Use Travelpayouts autocomplete - reliable and always works
       const cityResponse = await fetch(
         `https://autocomplete.travelpayouts.com/places2?term=${encodeURIComponent(searchTerm)}&locale=en&types[]=city`
       );
       
-      const cityData = await cityResponse.json();
-      
-      if (cityData && Array.isArray(cityData)) {
-        const results: SearchResult[] = cityData.slice(0, 10).map((item: any) => ({
-          name: item.name || item.city_name || '',
-          type: 'city',
-          country: item.country_name || item.country || '',
-          displayName: item.name || item.city_name || ''
-        }));
+      if (cityResponse.ok) {
+        const cityData = await cityResponse.json();
         
-        setSuggestions(results);
-        setShowSuggestions(true);
+        if (cityData && Array.isArray(cityData) && cityData.length > 0) {
+          const results: SearchResult[] = cityData.slice(0, 15).map((item: any) => ({
+            name: item.name || item.city_name || '',
+            type: 'city',
+            country: item.country_name || item.country || '',
+            displayName: item.name || item.city_name || ''
+          }));
+          
+          setSuggestions(results);
+          setShowSuggestions(true);
+        } else {
+          setSuggestions([]);
+          setShowSuggestions(true);
+        }
       }
     } catch (error) {
       console.error('Hotel search error:', error);
       setSuggestions([]);
+      setShowSuggestions(true);
     } finally {
       setIsLoading(false);
     }
@@ -211,15 +186,14 @@ export default function HotelCityAutocomplete({ value, onChange, placeholder, la
         </div>
       )}
       
-      {showSuggestions && suggestions.length === 0 && !isLoading && inputValue.length >= 3 && (
+      {showSuggestions && suggestions.length === 0 && !isLoading && inputValue.length >= 2 && (
         <div className="absolute z-50 w-full mt-1 bg-white border-2 border-gray-200 rounded-lg shadow-lg p-4">
-          <p className="text-gray-600 text-sm mb-2">💡 <strong>You can type:</strong></p>
+          <p className="text-gray-600 text-sm mb-2">💡 <strong>No cities found. Try:</strong></p>
           <ul className="text-gray-600 text-sm space-y-1 ml-4 list-disc">
-            <li><strong>Hotel + City:</strong> "Oberoi Mumbai"</li>
-            <li><strong>Specific Hotel:</strong> "Taj Mahal Palace"</li>
-            <li><strong>Just City:</strong> "Paris" or "New York"</li>
+            <li>Major cities: "Paris", "New York", "London"</li>
+            <li>Or type a hotel name directly</li>
           </ul>
-          <p className="text-green-600 text-xs mt-2 font-semibold">✓ Booking.com will show all matching hotels when you search!</p>
+          <p className="text-green-600 text-xs mt-2 font-semibold">✓ Booking.com will find all matching hotels when you search!</p>
         </div>
       )}
     </div>

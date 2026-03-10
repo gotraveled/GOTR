@@ -58,10 +58,26 @@ export default function QuickSearch() {
         window.location.href = `https://sp.booking.com/searchresults.html?${params.toString()}`;
         break;
       }
-      case 'cars':
-        // Cars - redirect to base with marker
-        window.location.href = `https://book.gotraveled.com/cars?marker=250882`;
+      case 'cars': {
+        // Build DiscoverCars URL with proper parameters
+        const carUrl = new URL('https://www.discovercars.com/');
+        carUrl.searchParams.append('a_aid', '250882');
+        
+        if (carData.pickup) {
+          carUrl.searchParams.append('from', carData.pickup);
+        }
+        
+        if (carData.pickupDate) {
+          const [pickupDate, pickupTime] = carData.pickupDate.split('T');
+          carUrl.searchParams.append('from_date', pickupDate);
+          if (pickupTime) {
+            carUrl.searchParams.append('from_time', pickupTime);
+          }
+        }
+        
+        window.location.href = carUrl.toString();
         break;
+      }
       case 'transfers':
         // Transfers - redirect to base with marker
         window.location.href = `https://book.gotraveled.com/transfers?marker=250882`;
