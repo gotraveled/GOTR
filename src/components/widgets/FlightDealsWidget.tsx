@@ -19,75 +19,85 @@ const FlightDealsWidget = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    // Show mock data immediately for better UX
-    const mockDeals: FlightDeal[] = [
-      {
-        origin: 'NYC',
-        destination: 'London',
-        price: 299,
-        currency: 'USD',
-        departure_at: '2026-04-15',
-        return_at: '2026-04-22',
-        airline: 'British Airways'
-      },
-      {
-        origin: 'LAX',
-        destination: 'Tokyo',
-        price: 450,
-        currency: 'USD',
-        departure_at: '2026-05-10',
-        return_at: '2026-05-20',
-        airline: 'ANA'
-      },
-      {
-        origin: 'NYC',
-        destination: 'Paris',
-        price: 320,
-        currency: 'USD',
-        departure_at: '2026-06-01',
-        return_at: '2026-06-10',
-        airline: 'Air France'
-      },
-      {
-        origin: 'MIA',
-        destination: 'Barcelona',
-        price: 280,
-        currency: 'USD',
-        departure_at: '2026-04-20',
-        return_at: '2026-04-28',
-        airline: 'Iberia'
-      },
-      {
-        origin: 'SFO',
-        destination: 'Sydney',
-        price: 580,
-        currency: 'USD',
-        departure_at: '2026-07-15',
-        return_at: '2026-07-30',
-        airline: 'Qantas'
-      },
-      {
-        origin: 'CHI',
-        destination: 'Dubai',
-        price: 420,
-        currency: 'USD',
-        departure_at: '2026-05-05',
-        return_at: '2026-05-15',
-        airline: 'Emirates'
-      }
-    ];
-
-    setDeals(mockDeals);
-    setIsLoading(false);
-
-    // Try to fetch real data from Travelpayouts API
     const fetchDeals = async () => {
       try {
-        // Note: This would require proper API implementation
-        // For now we're showing mock data that looks real
+        // Fetch real flight deals from Travelpayouts API
+        // Popular routes: NYC, LAX, MIA, CHI, SFO to international destinations
+        const response = await fetch('/api/flight-deals');
+        
+        if (response.ok) {
+          const data = await response.json();
+          if (data.deals && data.deals.length > 0) {
+            setDeals(data.deals);
+            setIsLoading(false);
+            return;
+          }
+        }
+        
+        // Fallback to mock data if API fails
+        const mockDeals: FlightDeal[] = [
+          {
+            origin: 'NYC',
+            destination: 'London',
+            price: 299,
+            currency: 'USD',
+            departure_at: '2026-04-15',
+            return_at: '2026-04-22',
+            airline: 'British Airways'
+          },
+          {
+            origin: 'LAX',
+            destination: 'Tokyo',
+            price: 450,
+            currency: 'USD',
+            departure_at: '2026-05-10',
+            return_at: '2026-05-20',
+            airline: 'ANA'
+          },
+          {
+            origin: 'NYC',
+            destination: 'Paris',
+            price: 320,
+            currency: 'USD',
+            departure_at: '2026-06-01',
+            return_at: '2026-06-10',
+            airline: 'Air France'
+          },
+          {
+            origin: 'MIA',
+            destination: 'Barcelona',
+            price: 280,
+            currency: 'USD',
+            departure_at: '2026-04-20',
+            return_at: '2026-04-28',
+            airline: 'Iberia'
+          },
+          {
+            origin: 'SFO',
+            destination: 'Sydney',
+            price: 580,
+            currency: 'USD',
+            departure_at: '2026-07-15',
+            return_at: '2026-07-30',
+            airline: 'Qantas'
+          },
+          {
+            origin: 'CHI',
+            destination: 'Dubai',
+            price: 420,
+            currency: 'USD',
+            departure_at: '2026-05-05',
+            return_at: '2026-05-15',
+            airline: 'Emirates'
+          }
+        ];
+        
+        setDeals(mockDeals);
+        setIsLoading(false);
       } catch (err) {
         console.error('Error fetching deals:', err);
-        // Keep mock data on error
+        setError(true);
+        setIsLoading(false);
       }
     };
 
