@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import CarWidget from '@/components/widgets/CarWidget';
 
 export const metadata: Metadata = {
@@ -51,14 +52,26 @@ export default function CarsPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary to-secondary text-white py-20">
-        <div className="container-custom">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Compare Car Rental Prices
-          </h1>
-          <p className="text-xl mb-8">
-            Find the best car rental deals from top companies worldwide
-          </p>
+      <section className="relative text-white py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&q=80"
+            alt="Car Rentals"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-secondary/85 to-accent/90"></div>
+        </div>
+        <div className="container-custom relative">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              Compare Car Rental Prices
+            </h1>
+            <p className="text-xl mb-8">
+              Find the best car rental deals from top companies worldwide
+            </p>
+          </div>
         </div>
       </section>
 

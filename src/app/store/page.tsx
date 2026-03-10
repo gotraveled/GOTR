@@ -113,8 +113,18 @@ export default function StorePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary via-secondary to-accent text-white py-16">
-        <div className="container-custom">
+      <section className="relative text-white py-16 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1920&q=80"
+            alt="Travel Store"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-secondary/85 to-accent/90"></div>
+        </div>
+        <div className="container-custom relative">
           <div className="max-w-3xl mx-auto text-center">
             <FaShoppingCart className="text-6xl mx-auto mb-6" />
             <h1 className="text-4xl md:text-5xl font-bold mb-4">

@@ -4,6 +4,7 @@ import TaxiWidget from '@/components/widgets/TaxiWidget';
 import TransferBookingWidget from '@/components/widgets/TransferBookingWidget';
 import TransferReviewsWidget from '@/components/widgets/TransferReviewsWidget';
 import { useEffect } from 'react';
+import Image from 'next/image';
 
 export default function TransfersPage() {
   useEffect(() => {
@@ -32,14 +33,26 @@ export default function TransfersPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary to-secondary text-white py-20">
-        <div className="container-custom">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Book Airport Transfers Worldwide
-          </h1>
-          <p className="text-xl mb-8">
-            Reliable, safe, and affordable airport taxi and transfer services
-          </p>
+      <section className="relative text-white py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&q=80"
+            alt="Airport Transfers"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-secondary/85 to-accent/90"></div>
+        </div>
+        <div className="container-custom relative">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              Book Airport Transfers Worldwide
+            </h1>
+            <p className="text-xl mb-8">
+              Reliable, safe, and affordable airport taxi and transfer services
+            </p>
+          </div>
         </div>
       </section>
 

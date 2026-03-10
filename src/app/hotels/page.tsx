@@ -2,6 +2,7 @@
 
 import HotelWidget from '@/components/widgets/HotelWidget';
 import { useEffect } from 'react';
+import Image from 'next/image';
 
 export default function HotelsPage() {
   useEffect(() => {
@@ -54,14 +55,26 @@ export default function HotelsPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary to-secondary text-white py-20">
-        <div className="container-custom">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Find Your Perfect Hotel
-          </h1>
-          <p className="text-xl mb-8">
-            Compare prices and book the best hotels worldwide
-          </p>
+      <section className="relative text-white py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80"
+            alt="Hotels"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-secondary/85 to-accent/90"></div>
+        </div>
+        <div className="container-custom relative">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              Find Your Perfect Hotel
+            </h1>
+            <p className="text-xl mb-8">
+              Compare prices and book the best hotels worldwide
+            </p>
+          </div>
         </div>
       </section>
 
