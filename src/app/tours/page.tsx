@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Tours & Activities - Book Experiences Worldwide | GoTraveled',
@@ -112,10 +113,52 @@ export default function ToursPage() {
         </div>
       </section>
 
+      {/* Tour Packages */}
+      <section className="py-16 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div className="container-custom">
+          <h2 className="section-title text-center">Tour Packages</h2>
+          <p className="section-subtitle text-center">Complete vacation packages with flights, hotels, and activities</p>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
+            <Link href="/tours/domestic" className="group">
+              <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
+                <div className="relative h-64">
+                  <Image src="https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?w=600&q=80" alt="Domestic Tours" fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 className="text-3xl font-bold mb-2">🇺🇸 Domestic Tours</h3>
+                    <p className="text-lg">Explore the best of USA</p>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <p className="text-gray-700 mb-4">Grand Canyon, Yellowstone, New York, California and more amazing domestic destinations</p>
+                  <div className="text-blue-600 font-bold group-hover:translate-x-2 transition-transform">View Packages →</div>
+                </div>
+              </div>
+            </Link>
+            <Link href="/tours/international" className="group">
+              <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all">
+                <div className="relative h-64">
+                  <Image src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80" alt="International Tours" fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 className="text-3xl font-bold mb-2">🌍 International Tours</h3>
+                    <p className="text-lg">Discover the world</p>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <p className="text-gray-700 mb-4">Europe, Asia, Dubai, Bali, Japan and exotic international destinations worldwide</p>
+                  <div className="text-purple-600 font-bold group-hover:translate-x-2 transition-transform">View Packages →</div>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Categories */}
       <section className="py-16 bg-white">
         <div className="container-custom">
-          <h2 className="section-title text-center">Browse by Category</h2>
+          <h2 className="section-title text-center">Browse Tours by Activity</h2>
           <p className="section-subtitle text-center">
             Find the perfect activity for your adventure
           </p>
