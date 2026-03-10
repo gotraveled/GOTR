@@ -68,7 +68,7 @@ export async function GET(request: NextRequest) {
           }
         }
       } catch (endpointError) {
-        console.log(`Endpoint failed: ${endpoint}`);
+        console.error(`Endpoint failed: ${endpoint}`, endpointError);
         continue;
       }
     }
