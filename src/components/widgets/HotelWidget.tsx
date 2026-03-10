@@ -37,7 +37,7 @@ const HotelWidget = () => {
     params.append('sb_price_type', 'total');
     params.append('from_sf', '1');
     
-    window.location.href = `https://sp.booking.com/searchresults.en-us.html?${params.toString()}`;
+    window.location.href = `https://sp.booking.com/searchresults.html?${params.toString()}`;
   };
 
   // Get today's date for min attribute

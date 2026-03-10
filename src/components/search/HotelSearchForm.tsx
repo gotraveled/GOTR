@@ -38,8 +38,8 @@ export default function HotelSearchForm() {
     params.append('sb_price_type', 'total');
     params.append('from_sf', '1'); // From search form flag
     
-    // Redirect to Booking.com search (using en-us.html format)
-    window.location.href = `https://sp.booking.com/searchresults.en-us.html?${params.toString()}`;
+    // Redirect to Booking.com search
+    window.location.href = `https://sp.booking.com/searchresults.html?${params.toString()}`;
   };
 
   return (
