@@ -304,10 +304,6 @@ export default function InsurancePage() {
           <div className="flex flex-wrap gap-4 justify-center">
             <a 
               href="#quote"
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
               className="bg-white text-green-600 font-bold py-4 px-8 rounded-xl hover:shadow-2xl transform hover:scale-105 transition-all"
             >
               Get Free Quote

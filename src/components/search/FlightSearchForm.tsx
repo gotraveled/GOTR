@@ -25,18 +25,18 @@ export default function FlightSearchForm() {
     const originCode = formData.originCode || formData.origin.substring(0, 3).toUpperCase();
     const destCode = formData.destinationCode || formData.destination.substring(0, 3).toUpperCase();
     
-    // Parse departure date from YYYY-MM-DD format
-    const [depYear, depMonthStr, depDayStr] = formData.departure.split('-');
-    const depDay = depDayStr;
-    const depMonth = depMonthStr;
+    // Parse departure date from YYYY-MM-DD format (e.g., "2026-03-11")
+    const departureParts = formData.departure.split('-');
+    const depDay = departureParts[2];  // Day part (11)
+    const depMonth = departureParts[1]; // Month part (03)
     
     let flightSearchCode = `${originCode}${depDay}${depMonth}${destCode}`;
     
     // Add return date for round trip
     if (formData.tripType === 'roundtrip' && formData.return) {
-      const [retYear, retMonthStr, retDayStr] = formData.return.split('-');
-      const retDay = retDayStr;
-      const retMonth = retMonthStr;
+      const returnParts = formData.return.split('-');
+      const retDay = returnParts[2];  // Day part
+      const retMonth = returnParts[1]; // Month part
       flightSearchCode += `${retDay}${retMonth}`;
     }
     
