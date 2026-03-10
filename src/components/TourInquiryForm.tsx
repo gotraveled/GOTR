@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { FaUser, FaEnvelope, FaPhone, FaCalendar, FaUsers, FaCommentDots } from 'react-icons/fa';
 
 interface TourInquiryFormProps {
@@ -9,6 +10,7 @@ interface TourInquiryFormProps {
 }
 
 export default function TourInquiryForm({ tourName, destination }: TourInquiryFormProps) {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,14 +20,19 @@ export default function TourInquiryForm({ tourName, destination }: TourInquiryFo
     message: ''
   });
 
-  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
     
     // Create mailto link with form data
+    const toEmail = 'info@gotraveled.com';
+    const ccEmail = 'vijay0262@gmail.com';
     const subject = `Tour Inquiry: ${tourName} - ${destination}`;
     const body = `
+New Tour Inquiry
+
 Tour Package: ${tourName}
 Destination: ${destination}
 
@@ -35,30 +42,24 @@ Email: ${formData.email}
 Phone: ${formData.phone}
 
 Travel Details:
-Preferred Travel Date: ${formData.travelDate}
+Preferred Travel Date: ${formData.travelDate || 'Not specified'}
 Number of Travelers: ${formData.travelers}
 
-Message:
-${formData.message}
+Additional Information:
+${formData.message || 'None provided'}
 
+---
 Please provide pricing and availability for this tour package.
+Sent from GoTraveled Tour Inquiry Form
     `;
     
-    window.location.href = `mailto:support@gotraveled.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setSubmitted(true);
+    // Open mailto link with CC
+    window.location.href = `mailto:${toEmail}?cc=${ccEmail}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     
-    // Reset form after 3 seconds
+    // Redirect to thank you page after short delay
     setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        travelDate: '',
-        travelers: '2',
-        message: ''
-      });
-    }, 3000);
+      router.push('/thank-you?type=tour-inquiry');
+    }, 1000);
   };
 
   return (
@@ -72,17 +73,7 @@ Please provide pricing and availability for this tour package.
         </p>
       </div>
 
-      {submitted ? (
-        <div className="bg-green-100 border-2 border-green-500 rounded-xl p-8 text-center">
-          <div className="text-6xl mb-4">✅</div>
-          <h3 className="text-2xl font-bold text-green-800 mb-2">
-            Thank You!
-          </h3>
-          <p className="text-green-700 text-lg">
-            Your inquiry has been sent. We'll contact you shortly with pricing and details.
-          </p>
-        </div>
-      ) : (
+      {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid md:grid-cols-2 gap-6">
             {/* Name */}
@@ -188,9 +179,10 @@ Please provide pricing and availability for this tour package.
           <div className="space-y-4">
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-4 px-8 rounded-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 text-lg"
+              className="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 px-8 rounded-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 text-lg"
+              disabled={loading}
             >
-              📨 Send Inquiry & Get Pricing
+              {loading ? '📨 Sending...' : '📨 Send Inquiry & Get Pricing'}
             </button>
             
             <p className="text-sm text-gray-600 text-center">
@@ -198,7 +190,7 @@ Please provide pricing and availability for this tour package.
             </p>
           </div>
         </form>
-      )}
+      }
 
       {/* Contact Info */}
       <div className="mt-8 pt-8 border-t-2 border-gray-200">
@@ -211,7 +203,7 @@ Please provide pricing and availability for this tour package.
           <div>
             <div className="text-2xl mb-2">📧</div>
             <p className="text-sm font-bold text-gray-800">Email Us</p>
-            <p className="text-sm text-gray-600">support@gotraveled.com</p>
+            <p className="text-sm text-gray-600">info@gotraveled.com</p>
           </div>
           <div>
             <div className="text-2xl mb-2">💬</div>

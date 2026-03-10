@@ -1,21 +1,49 @@
 'use client';
 
-import type { Metadata } from 'next';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function ContactPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: '',
   });
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thank you for contacting us! We will get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setLoading(true);
+
+    // Create mailto link with all recipients
+    const toEmail = 'info@gotraveled.com';
+    const ccEmail = 'vijay0262@gmail.com';
+    const subject = `Contact Form: ${formData.subject}`;
+    const body = `
+New Contact Form Submission
+
+From: ${formData.name}
+Email: ${formData.email}
+Subject: ${formData.subject}
+
+Message:
+${formData.message}
+
+---
+Sent from GoTraveled Contact Form
+    `;
+
+    // Open mailto link
+    window.location.href = `mailto:${toEmail}?cc=${ccEmail}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // Redirect to thank you page after short delay
+    setTimeout(() => {
+      router.push('/thank-you?type=contact');
+    }, 1000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -28,10 +56,22 @@ export default function ContactPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-primary to-secondary text-white py-20">
-        <div className="container-custom text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
-          <p className="text-xl">We'd love to hear from you</p>
+      <section className="relative text-white py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80"
+            alt="Contact Us"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-secondary/85 to-accent/90"></div>
+        </div>
+        <div className="container-custom relative">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+            <p className="text-xl">We'd love to hear from you</p>
+          </div>
         </div>
       </section>
 
@@ -107,8 +147,12 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <button type="submit" className="btn-primary w-full">
-                  Send Message
+                <button 
+                  type="submit" 
+                  className="btn-primary w-full"
+                  disabled={loading}
+                >
+                  {loading ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>
@@ -128,8 +172,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <p className="text-gray-700">support@gotraveled.com</p>
-                    <p className="text-gray-700">partnerships@gotraveled.com</p>
+                    <a href="mailto:info@gotraveled.com" className="text-gray-700 hover:text-primary">info@gotraveled.com</a><br />
+                    <a href="mailto:vijay0262@gmail.com" className="text-gray-700 hover:text-primary">vijay0262@gmail.com</a>
                   </div>
                 </div>
 
@@ -139,7 +183,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Phone</h3>
-                    <p className="text-gray-700">+1 (555) 123-4567</p>
+                    <a href="tel:+19094811234" className="text-gray-700 hover:text-primary">+1 (909) 481-1234</a>
                     <p className="text-sm text-gray-500">Monday - Friday, 9am - 6pm EST</p>
                   </div>
                 </div>
@@ -151,9 +195,8 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold mb-1">Address</h3>
                     <p className="text-gray-700">
-                      123 Travel Street<br />
-                      Suite 456<br />
-                      New York, NY 10001<br />
+                      7430 Pasito Ave<br />
+                      Rancho Cucamonga, CA 91730<br />
                       United States
                     </p>
                   </div>
