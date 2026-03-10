@@ -35,15 +35,26 @@ export default function QuickSearch() {
         break;
       }
       case 'hotels': {
-        // Build Hotellook search URL
-        const params = new URLSearchParams();
-        params.append('city', hotelData.city);
-        params.append('checkIn', hotelData.checkIn);
-        params.append('checkOut', hotelData.checkOut);
-        params.append('adults', '2'); // Default 2 adults
-        params.append('marker', '250882');
+        // Build Booking.com search URL
+        const [checkInYear, checkInMonth, checkInDay] = hotelData.checkIn.split('-');
+        const [checkOutYear, checkOutMonth, checkOutDay] = hotelData.checkOut.split('-');
         
-        window.location.href = `https://search.hotellook.com/?${params.toString()}`;
+        const params = new URLSearchParams();
+        params.append('aid', '338584');
+        params.append('label', 'affnetTP_393530915594160');
+        params.append('ss', hotelData.city);
+        params.append('checkin_year', checkInYear);
+        params.append('checkin_month', checkInMonth);
+        params.append('checkin_monthday', checkInDay);
+        params.append('checkout_year', checkOutYear);
+        params.append('checkout_month', checkOutMonth);
+        params.append('checkout_monthday', checkOutDay);
+        params.append('group_adults', '2');
+        params.append('group_children', '0');
+        params.append('no_rooms', '1');
+        params.append('sb_price_type', 'total');
+        
+        window.location.href = `https://sp.booking.com/searchresults.html?${params.toString()}`;
         break;
       }
       case 'cars':

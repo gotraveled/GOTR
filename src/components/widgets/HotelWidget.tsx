@@ -139,7 +139,7 @@ const HotelWidget = () => {
         </button>
         
         <p className="text-xs text-center text-gray-500 mt-2">
-          Search powered by Hotellook - Compare prices from 70+ booking sites
+          Search powered by Booking.com - Access to millions of properties worldwide
         </p>
       </form>
     </div>

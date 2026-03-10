@@ -16,24 +16,29 @@ export default function HotelSearchForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Build Hotellook search URL
-    // Format: https://search.hotellook.com/?city=CITY&checkIn=YYYY-MM-DD&checkOut=YYYY-MM-DD&adults=N&marker=250882
+    // Build Booking.com search URL with affiliate tracking
+    // Parse dates from YYYY-MM-DD format
+    const [checkInYear, checkInMonth, checkInDay] = formData.checkIn.split('-');
+    const [checkOutYear, checkOutMonth, checkOutDay] = formData.checkOut.split('-');
+    
+    // Build Booking.com URL
     const params = new URLSearchParams();
+    params.append('aid', '338584'); // Your Booking.com affiliate ID
+    params.append('label', 'affnetTP_393530915594160'); // Your label from Travelpayouts
+    params.append('ss', formData.city); // Search string (city/hotel name)
+    params.append('checkin_year', checkInYear);
+    params.append('checkin_month', checkInMonth);
+    params.append('checkin_monthday', checkInDay);
+    params.append('checkout_year', checkOutYear);
+    params.append('checkout_month', checkOutMonth);
+    params.append('checkout_monthday', checkOutDay);
+    params.append('group_adults', formData.guests);
+    params.append('group_children', '0');
+    params.append('no_rooms', '1');
+    params.append('sb_price_type', 'total');
     
-    // Use city name or city ID if available
-    if (formData.cityId) {
-      params.append('cityId', formData.cityId);
-    } else {
-      params.append('city', formData.city);
-    }
-    
-    params.append('checkIn', formData.checkIn);
-    params.append('checkOut', formData.checkOut);
-    params.append('adults', formData.guests);
-    params.append('marker', '250882');
-    
-    // Redirect to Hotellook search
-    window.location.href = `https://search.hotellook.com/?${params.toString()}`;
+    // Redirect to Booking.com search
+    window.location.href = `https://sp.booking.com/searchresults.html?${params.toString()}`;
   };
 
   return (
