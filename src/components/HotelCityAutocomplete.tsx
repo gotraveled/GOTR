@@ -183,7 +183,8 @@ export default function HotelCityAutocomplete({ value, onChange, placeholder, la
       
       {showSuggestions && suggestions.length === 0 && !isLoading && inputValue.length >= 2 && (
         <div className="absolute z-50 w-full mt-1 bg-white border-2 border-gray-200 rounded-lg shadow-lg p-4">
-          <p className="text-gray-500 text-sm">No hotels or cities found. Try a different search.</p>
+          <p className="text-gray-600 text-sm">💡 <strong>Tip:</strong> Type any hotel name, city, or address.</p>
+          <p className="text-gray-500 text-xs mt-1">Booking.com will search for it when you submit.</p>
         </div>
       )}
     </div>

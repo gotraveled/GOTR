@@ -47,7 +47,7 @@ export default function HotelSearchForm() {
       <HotelCityAutocomplete
         value={formData.city}
         onChange={(value) => setFormData({ ...formData, city: value })}
-        placeholder="Search city, hotel name, or landmark"
+        placeholder="Type any city, hotel name, or address"
         label="Where are you going?"
         required
       />

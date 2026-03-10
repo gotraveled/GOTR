@@ -59,7 +59,7 @@ const HotelWidget = () => {
         <HotelCityAutocomplete
           value={formData.destination}
           onChange={(value) => setFormData({ ...formData, destination: value })}
-          placeholder="Search city, hotel name, or landmark"
+          placeholder="Type any city, hotel name, or address"
           label="Where are you going?"
           required
         />
