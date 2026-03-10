@@ -151,18 +151,18 @@ export default function StorePage() {
       <section className="py-16 bg-gray-50">
         <div className="container-custom">
           <h2 className="section-title text-center">Shop by Category</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mt-8">
             {categories.map((category) => (
               <Link
                 key={category.name}
                 href={category.href}
-                className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-200 text-center group"
+                className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-200 text-center group hover:bg-blue-50"
               >
-                <div className="text-4xl mb-3 transform group-hover:scale-110 transition-transform">
+                <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform">
                   {category.icon}
                 </div>
-                <h3 className="font-bold text-gray-800 mb-1">{category.name}</h3>
-                <p className="text-sm text-gray-500">{category.count} products</p>
+                <h3 className="font-bold text-gray-800 mb-2 text-base">{category.name}</h3>
+                <p className="text-sm text-gray-500 font-medium">{category.count} products</p>
               </Link>
             ))}
           </div>
@@ -180,7 +180,7 @@ export default function StorePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
             {featuredProducts.map((product) => (
               <div key={product.id} className="bg-white rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-64 bg-gray-100 overflow-hidden">
                   <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 px-2 py-1 rounded-full text-xs font-bold z-10">
                     ⭐ {product.rating}
                   </div>
@@ -188,7 +188,8 @@ export default function StorePage() {
                     src={product.image}
                     alt={product.name}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    className="object-contain p-4 group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
                 
