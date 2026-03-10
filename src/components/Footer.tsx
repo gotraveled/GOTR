@@ -74,7 +74,7 @@ const Footer = () => {
             <div className="text-gray-400 text-sm mb-4">
               <p className="font-semibold text-white mb-1">Contact Us:</p>
               <p>📧 <a href="mailto:info@gotraveled.com" className="hover:text-primary">info@gotraveled.com</a></p>
-              <p>📞 <a href="tel:+19094811234" className="hover:text-primary">+1 (909) 481-1234</a></p>
+              <p>📞 <a href="tel:+18009370173" className="hover:text-primary">1-800-937-0173</a></p>
               <p>📍 7430 Pasito Ave, Rancho Cucamonga, CA 91730</p>
             </div>
             <div className="flex space-x-3">

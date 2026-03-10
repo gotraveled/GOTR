@@ -26,7 +26,7 @@ const Header = () => {
         <div className="container-custom">
           <div className="flex justify-between items-center text-sm">
             <div className="flex items-center space-x-6">
-              <a href="tel:+1234567890" className="flex items-center space-x-2 hover:text-blue-100 transition-colors">
+              <a href="tel:+18009370173" className="flex items-center space-x-2 hover:text-blue-100 transition-colors">
                 <FiPhone className="text-sm" />
                 <span className="hidden md:inline">24/7 Support</span>
               </a>

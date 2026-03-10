@@ -198,7 +198,7 @@ Sent from GoTraveled Tour Inquiry Form
           <div>
             <div className="text-2xl mb-2">📞</div>
             <p className="text-sm font-bold text-gray-800">Call Us</p>
-            <p className="text-sm text-gray-600">+1 234 567 8900</p>
+            <p className="text-sm text-gray-600">1-800-937-0173</p>
           </div>
           <div>
             <div className="text-2xl mb-2">📧</div>

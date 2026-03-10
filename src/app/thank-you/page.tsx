@@ -80,8 +80,8 @@ function ThankYouContent() {
             <div>
               <div className="text-2xl mb-2">📞</div>
               <p className="text-sm font-semibold text-gray-800">Call Us</p>
-              <a href="tel:+19094811234" className="text-sm text-primary hover:underline">
-                +1 (909) 481-1234
+              <a href="tel:+18009370173" className="text-sm text-primary hover:underline">
+                1-800-937-0173
               </a>
             </div>
             <div>

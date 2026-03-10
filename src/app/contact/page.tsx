@@ -183,7 +183,7 @@ Sent from GoTraveled Contact Form
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Phone</h3>
-                    <a href="tel:+19094811234" className="text-gray-700 hover:text-primary">+1 (909) 481-1234</a>
+                    <a href="tel:+18009370173" className="text-gray-700 hover:text-primary">1-800-937-0173</a>
                     <p className="text-sm text-gray-500">Monday - Friday, 9am - 6pm EST</p>
                   </div>
                 </div>
