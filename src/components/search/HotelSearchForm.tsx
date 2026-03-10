@@ -7,16 +7,33 @@ import RealCityAutocomplete from '@/components/RealCityAutocomplete';
 export default function HotelSearchForm() {
   const [formData, setFormData] = useState({
     city: '',
+    cityId: '',
     checkIn: '',
     checkOut: '',
     guests: '2'
   });
 
-    const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Redirect to book.gotraveled.com hotels with marker
-    window.location.href = `https://book.gotraveled.com/hotels?marker=250882`;
+    // Build Hotellook search URL
+    // Format: https://search.hotellook.com/?city=CITY&checkIn=YYYY-MM-DD&checkOut=YYYY-MM-DD&adults=N&marker=250882
+    const params = new URLSearchParams();
+    
+    // Use city name or city ID if available
+    if (formData.cityId) {
+      params.append('cityId', formData.cityId);
+    } else {
+      params.append('city', formData.city);
+    }
+    
+    params.append('checkIn', formData.checkIn);
+    params.append('checkOut', formData.checkOut);
+    params.append('adults', formData.guests);
+    params.append('marker', '250882');
+    
+    // Redirect to Hotellook search
+    window.location.href = `https://search.hotellook.com/?${params.toString()}`;
   };
 
   return (
@@ -24,7 +41,7 @@ export default function HotelSearchForm() {
       {/* City */}
       <RealCityAutocomplete
         value={formData.city}
-        onChange={(value, id) => setFormData({ ...formData, city: value })}
+        onChange={(value, id) => setFormData({ ...formData, city: value, cityId: id })}
         placeholder="City, hotel, or landmark"
         label="Destination"
         required
@@ -80,11 +97,8 @@ export default function HotelSearchForm() {
         type="submit"
         className="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 px-8 rounded-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
       >
-        Search Hotels on book.gotraveled.com
+        Search Hotels
       </button>
-      <p className="text-xs text-center text-gray-500 mt-2">
-        You'll be redirected to our booking platform to complete your search
-      </p>
     </form>
   );
 }

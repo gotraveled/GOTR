@@ -34,10 +34,18 @@ export default function QuickSearch() {
         window.location.href = `https://book.gotraveled.com/?${params.toString()}`;
         break;
       }
-      case 'hotels':
-        // Hotels - redirect to base for now until Hotellook connected
-        window.location.href = `https://book.gotraveled.com/hotels?marker=250882`;
+      case 'hotels': {
+        // Build Hotellook search URL
+        const params = new URLSearchParams();
+        params.append('city', hotelData.city);
+        params.append('checkIn', hotelData.checkIn);
+        params.append('checkOut', hotelData.checkOut);
+        params.append('adults', '2'); // Default 2 adults
+        params.append('marker', '250882');
+        
+        window.location.href = `https://search.hotellook.com/?${params.toString()}`;
         break;
+      }
       case 'cars':
         // Cars - redirect to base with marker
         window.location.href = `https://book.gotraveled.com/cars?marker=250882`;
