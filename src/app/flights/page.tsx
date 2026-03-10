@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   keywords: 'cheap flights, flight booking, airline tickets, flight deals, compare flights',
 };
 
+// Force dynamic rendering to avoid timeout
+export const dynamic = 'force-dynamic';
+
 export default function FlightsPage() {
   const airlines = [
     'Emirates', 'Qatar Airways', 'Singapore Airlines', 

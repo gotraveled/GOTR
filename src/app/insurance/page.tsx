@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   keywords: 'travel insurance, trip insurance, medical coverage, trip cancellation, travel protection',
 };
 
+// Force dynamic rendering to avoid timeout
+export const dynamic = 'force-dynamic';
+
 export default function InsurancePage() {
   const coverageTypes = [
     {

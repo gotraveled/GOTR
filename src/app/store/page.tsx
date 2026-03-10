@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   keywords: 'travel store, travel gear, luggage, backpacks, travel accessories, travel products',
 };
 
+export const dynamic = 'force-dynamic';
+
 export default function StorePage() {
   const categories = [
     { name: 'Luggage & Bags', href: '/store/luggage', icon: '🎒', count: 25 },
