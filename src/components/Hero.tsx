@@ -29,7 +29,7 @@ const Hero = () => {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-600/90 via-pink-600/85 to-purple-700/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-secondary/85 to-accent/90"></div>
       </div>
       
       <div className="relative container-custom py-16 md:py-24">
@@ -56,8 +56,8 @@ const Hero = () => {
                     onClick={() => setActiveTab(tab.id)}
                     className={`flex-1 flex items-center justify-center space-x-2 py-5 px-4 font-bold text-sm md:text-base transition-all ${
                       activeTab === tab.id
-                        ? 'bg-white text-orange-600 border-b-4 border-orange-600 -mb-0.5'
-                        : 'bg-gray-50 text-gray-600 hover:bg-white hover:text-orange-500'
+                        ? 'bg-white text-primary border-b-4 border-primary -mb-0.5'
+                        : 'bg-gray-50 text-gray-600 hover:bg-white hover:text-secondary'
                     }`}
                   >
                     <Icon className="text-xl md:text-2xl" />
@@ -80,15 +80,15 @@ const Hero = () => {
           <div className="mt-8 grid grid-cols-3 gap-4 max-w-3xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
               <p className="text-2xl md:text-3xl font-bold">500+</p>
-              <p className="text-sm text-orange-100">Airlines</p>
+              <p className="text-sm text-blue-100">Airlines</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
               <p className="text-2xl md:text-3xl font-bold">1M+</p>
-              <p className="text-sm text-orange-100">Hotels</p>
+              <p className="text-sm text-blue-100">Hotels</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
               <p className="text-2xl md:text-3xl font-bold">5M+</p>
-              <p className="text-sm text-orange-100">Happy Travelers</p>
+              <p className="text-sm text-blue-100">Happy Travelers</p>
             </div>
           </div>
         </div>

@@ -135,7 +135,7 @@ export default function ToursPage() {
                 </div>
                 <div className="p-6">
                   <p className="text-gray-700 mb-4">Discover India's diverse landscapes from Himalayan peaks to tropical beaches. 35+ destinations including Kashmir, Shimla, Jaipur, Kerala, and more.</p>
-                  <div className="flex items-center text-orange-600 font-bold group-hover:translate-x-2 transition-transform">
+                  <div className="flex items-center text-primary font-bold group-hover:translate-x-2 transition-transform">
                     <span>Explore Domestic Tours</span>
                     <span className="ml-2">→</span>
                   </div>
@@ -160,7 +160,7 @@ export default function ToursPage() {
                 </div>
                 <div className="p-6">
                   <p className="text-gray-700 mb-4">Experience world-class destinations across Asia, Middle East, and Europe. 9 international packages including Dubai, Thailand, Singapore, and more.</p>
-                  <div className="flex items-center text-purple-600 font-bold group-hover:translate-x-2 transition-transform">
+                  <div className="flex items-center text-secondary font-bold group-hover:translate-x-2 transition-transform">
                     <span>Explore International Tours</span>
                     <span className="ml-2">→</span>
                   </div>
@@ -241,13 +241,13 @@ export default function ToursPage() {
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all">
                 <div className="relative h-56">
                   <Image src="https://images.unsplash.com/photo-1567016526105-22da7c13161a?w=600&q=80" alt="Kashmir" fill className="object-cover group-hover:scale-110 transition-transform" />
-                  <div className="absolute top-3 right-3 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">Popular</div>
+                  <div className="absolute top-3 right-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold">Popular</div>
                 </div>
                 <div className="p-5">
-                  <h3 className="font-bold text-xl mb-2 group-hover:text-orange-600 transition-colors">Kashmir Valley Tour</h3>
+                  <h3 className="font-bold text-xl mb-2 group-hover:text-primary transition-colors">Kashmir Valley Tour</h3>
                   <p className="text-gray-600 text-sm mb-3">Srinagar • Gulmarg • Pahalgam • Sonamarg</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-orange-600 font-bold">Contact for Pricing</span>
+                    <span className="text-primary font-bold">Contact for Pricing</span>
                     <span className="text-sm text-gray-500">5-7 Days</span>
                   </div>
                 </div>
@@ -257,13 +257,13 @@ export default function ToursPage() {
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all">
                 <div className="relative h-56">
                   <Image src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09f?w=600&q=80" alt="Golden Triangle" fill className="object-cover group-hover:scale-110 transition-transform" />
-                  <div className="absolute top-3 right-3 bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">Bestseller</div>
+                  <div className="absolute top-3 right-3 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold">Bestseller</div>
                 </div>
                 <div className="p-5">
-                  <h3 className="font-bold text-xl mb-2 group-hover:text-orange-600 transition-colors">Golden Triangle Tour</h3>
+                  <h3 className="font-bold text-xl mb-2 group-hover:text-primary transition-colors">Golden Triangle Tour</h3>
                   <p className="text-gray-600 text-sm mb-3">Delhi • Agra • Jaipur</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-orange-600 font-bold">Contact for Pricing</span>
+                    <span className="text-primary font-bold">Contact for Pricing</span>
                     <span className="text-sm text-gray-500">5-7 Days</span>
                   </div>
                 </div>
@@ -273,13 +273,13 @@ export default function ToursPage() {
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all">
                 <div className="relative h-56">
                   <Image src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80" alt="Dubai" fill className="object-cover group-hover:scale-110 transition-transform" />
-                  <div className="absolute top-3 right-3 bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold">International</div>
+                  <div className="absolute top-3 right-3 bg-secondary text-white px-3 py-1 rounded-full text-sm font-bold">International</div>
                 </div>
                 <div className="p-5">
-                  <h3 className="font-bold text-xl mb-2 group-hover:text-purple-600 transition-colors">Dubai Explorer</h3>
+                  <h3 className="font-bold text-xl mb-2 group-hover:text-secondary transition-colors">Dubai Explorer</h3>
                   <p className="text-gray-600 text-sm mb-3">Burj Khalifa • Desert Safari • Dubai Mall</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-purple-600 font-bold">Contact for Pricing</span>
+                    <span className="text-secondary font-bold">Contact for Pricing</span>
                     <span className="text-sm text-gray-500">4-5 Days</span>
                   </div>
                 </div>
@@ -287,10 +287,10 @@ export default function ToursPage() {
             </Link>
           </div>
           <div className="text-center mt-10">
-            <Link href="/tours/domestic" className="inline-block bg-gradient-to-r from-orange-600 to-pink-600 text-white font-bold py-4 px-8 rounded-xl hover:shadow-xl transform hover:scale-105 transition-all mr-4">
+            <Link href="/tours/domestic" className="inline-block bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 px-8 rounded-xl hover:shadow-xl transform hover:scale-105 transition-all mr-4">
               View All Domestic Tours
             </Link>
-            <Link href="/tours/international" className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold py-4 px-8 rounded-xl hover:shadow-xl transform hover:scale-105 transition-all">
+            <Link href="/tours/international" className="inline-block bg-gradient-to-r from-accent to-primary text-white font-bold py-4 px-8 rounded-xl hover:shadow-xl transform hover:scale-105 transition-all">
               View All International Tours
             </Link>
           </div>

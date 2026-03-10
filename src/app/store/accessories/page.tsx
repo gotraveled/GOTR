@@ -74,13 +74,13 @@ export default function AccessoriesPage() {
 
   return (
     <div>
-      <section className="bg-gradient-to-r from-orange-600 to-purple-600 text-white py-12">
+      <section className="bg-gradient-to-r from-primary to-secondary text-white py-12">
         <div className="container-custom">
-          <Link href="/store" className="text-orange-100 hover:text-white mb-4 inline-block">
+          <Link href="/store" className="text-blue-100 hover:text-white mb-4 inline-block">
             ← Back to Store
           </Link>
           <h1 className="text-3xl md:text-4xl font-bold mb-4">Travel Accessories</h1>
-          <p className="text-xl text-orange-100">
+          <p className="text-xl text-blue-100">
             Essential organizers and accessories to keep your trip smooth and stress-free
           </p>
         </div>
@@ -114,7 +114,7 @@ export default function AccessoriesPage() {
                     ))}
                   </ul>
 
-                  <div className="text-3xl font-bold text-orange-600 mb-4">${product.price}</div>
+                  <div className="text-3xl font-bold text-primary mb-4">${product.price}</div>
 
                   <a
                     href={`https://www.amazon.com/dp/${product.amazonId}?tag=gotraveled0a-20`}

@@ -74,11 +74,11 @@ export default function OutdoorPage() {
 
   return (
     <div>
-      <section className="bg-gradient-to-r from-orange-600 to-purple-600 text-white py-12">
+      <section className="bg-gradient-to-r from-primary to-secondary text-white py-12">
         <div className="container-custom">
-          <Link href="/store" className="text-orange-100 hover:text-white mb-4 inline-block">← Back to Store</Link>
+          <Link href="/store" className="text-blue-100 hover:text-white mb-4 inline-block">← Back to Store</Link>
           <h1 className="text-3xl md:text-4xl font-bold mb-4">Outdoor & Adventure Gear</h1>
-          <p className="text-xl text-orange-100">Essential gear for hiking, camping, and outdoor adventures</p>
+          <p className="text-xl text-blue-100">Essential gear for hiking, camping, and outdoor adventures</p>
         </div>
       </section>
 
@@ -102,7 +102,7 @@ export default function OutdoorPage() {
                   <ul className="text-sm text-gray-600 mb-4 space-y-2">
                     {product.features.map((feature, idx) => (<li key={idx}>✓ {feature}</li>))}
                   </ul>
-                  <div className="text-3xl font-bold text-orange-600 mb-4">${product.price}</div>
+                  <div className="text-3xl font-bold text-primary mb-4">${product.price}</div>
                   <a href={`https://www.amazon.com/dp/${product.amazonId}?tag=gotraveled0a-20`} target="_blank" rel="noopener noreferrer sponsored" className="block w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-bold py-3 px-4 rounded-lg hover:shadow-lg transform hover:scale-105 transition-all text-center">
                     <FaAmazon className="inline mr-2 text-xl" />Buy on Amazon
                   </a>

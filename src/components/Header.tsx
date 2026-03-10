@@ -22,22 +22,22 @@ const Header = () => {
   return (
     <>
       {/* Top Bar */}
-      <div className="bg-gradient-to-r from-orange-600 to-orange-500 text-white py-2">
+      <div className="bg-gradient-to-r from-primary to-secondary text-white py-2">
         <div className="container-custom">
           <div className="flex justify-between items-center text-sm">
             <div className="flex items-center space-x-6">
-              <a href="tel:+1234567890" className="flex items-center space-x-2 hover:text-orange-100 transition-colors">
+              <a href="tel:+1234567890" className="flex items-center space-x-2 hover:text-blue-100 transition-colors">
                 <FiPhone className="text-sm" />
                 <span className="hidden md:inline">24/7 Support</span>
               </a>
-              <a href="mailto:support@gotraveled.com" className="flex items-center space-x-2 hover:text-orange-100 transition-colors">
+              <a href="mailto:support@gotraveled.com" className="flex items-center space-x-2 hover:text-blue-100 transition-colors">
                 <FiMail className="text-sm" />
                 <span className="hidden md:inline">support@gotraveled.com</span>
               </a>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="hidden sm:inline text-orange-100">Best Price Guaranteed</span>
-              <span className="text-orange-100">|</span>
+              <span className="hidden sm:inline text-blue-100">Best Price Guaranteed</span>
+              <span className="text-blue-100">|</span>
               <span className="text-yellow-300 font-semibold">🔥 Hot Deals Today!</span>
             </div>
           </div>
@@ -68,7 +68,7 @@ const Header = () => {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:text-orange-600 hover:bg-orange-50 rounded-lg font-medium transition-all duration-200 group"
+                    className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:text-primary hover:bg-blue-50 rounded-lg font-medium transition-all duration-200 group"
                   >
                     <Icon className="text-lg group-hover:scale-110 transition-transform" />
                     <span>{item.name}</span>
@@ -79,7 +79,7 @@ const Header = () => {
 
             {/* Right Side - Contact */}
             <div className="hidden lg:flex items-center space-x-3">
-              <Link href="/contact" className="px-6 py-2.5 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-semibold rounded-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+              <Link href="/contact" className="px-6 py-2.5 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
                 Contact Us
               </Link>
             </div>
@@ -107,7 +107,7 @@ const Header = () => {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-600 rounded-lg font-medium transition-colors"
+                      className="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-primary rounded-lg font-medium transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <Icon className="text-lg" />
@@ -116,7 +116,7 @@ const Header = () => {
                   );
                 })}
                 <div className="pt-4 px-4">
-                  <Link href="/contact" className="block w-full py-2.5 px-4 text-center bg-gradient-to-r from-orange-600 to-orange-500 text-white font-semibold rounded-lg hover:shadow-lg transition-all">
+                  <Link href="/contact" className="block w-full py-2.5 px-4 text-center bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg hover:shadow-lg transition-all">
                     Contact Us
                   </Link>
                 </div>
