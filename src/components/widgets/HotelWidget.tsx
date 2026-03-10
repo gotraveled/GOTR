@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { FaMapMarkerAlt, FaCalendar, FaUser } from 'react-icons/fa';
-import RealCityAutocomplete from '@/components/RealCityAutocomplete';
+import HotelCityAutocomplete from '@/components/HotelCityAutocomplete';
 
 const HotelWidget = () => {
   const [formData, setFormData] = useState({
@@ -56,10 +56,10 @@ const HotelWidget = () => {
     <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-xl">
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Destination */}
-        <RealCityAutocomplete
+        <HotelCityAutocomplete
           value={formData.destination}
-          onChange={(value, id) => setFormData({ ...formData, destination: value, destinationId: id })}
-          placeholder="City, hotel name, or landmark"
+          onChange={(value) => setFormData({ ...formData, destination: value })}
+          placeholder="Search city, hotel name, or landmark"
           label="Where are you going?"
           required
         />

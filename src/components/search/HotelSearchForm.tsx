@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { FaCalendar, FaUser } from 'react-icons/fa';
-import RealCityAutocomplete from '@/components/RealCityAutocomplete';
+import HotelCityAutocomplete from '@/components/HotelCityAutocomplete';
 
 export default function HotelSearchForm() {
   const [formData, setFormData] = useState({
@@ -44,11 +44,11 @@ export default function HotelSearchForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {/* City */}
-      <RealCityAutocomplete
+      <HotelCityAutocomplete
         value={formData.city}
-        onChange={(value, id) => setFormData({ ...formData, city: value, cityId: id })}
-        placeholder="City, hotel, or landmark"
-        label="Destination"
+        onChange={(value) => setFormData({ ...formData, city: value })}
+        placeholder="Search city, hotel name, or landmark"
+        label="Where are you going?"
         required
       />
 
