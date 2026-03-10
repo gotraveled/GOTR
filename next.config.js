@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['images.unsplash.com', 'source.unsplash.com', 'tp.media', 'search.jetradar.com'],
+    domains: ['images.unsplash.com', 'source.unsplash.com', 'tp.media', 'search.jetradar.com', 'm.media-amazon.com'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -15,6 +15,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: '**.jetradar.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'm.media-amazon.com',
       },
     ],
   },

@@ -75,34 +75,34 @@ export default function LuggagePage() {
   return (
     <div>
       {/* Header */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-12">
+      <section className="bg-gradient-to-r from-orange-600 to-purple-600 text-white py-12">
         <div className="container-custom">
-          <Link href="/store" className="text-blue-100 hover:text-white mb-4 inline-block">
+          <Link href="/store" className="text-orange-100 hover:text-white mb-4 inline-block">
             ← Back to Store
           </Link>
           <h1 className="text-3xl md:text-4xl font-bold mb-4">Luggage & Suitcases</h1>
-          <p className="text-xl text-blue-100">
+          <p className="text-xl text-orange-100">
             Premium luggage from top brands - durable, stylish, and travel-tested
           </p>
         </div>
       </section>
 
       {/* Buying Guide */}
-      <section className="py-8 bg-blue-50">
+      <section className="py-8 bg-orange-50">
         <div className="container-custom">
           <div className="bg-white rounded-xl p-6 shadow-md">
             <h2 className="text-2xl font-bold mb-4">🎯 How to Choose the Right Luggage</h2>
             <div className="grid md:grid-cols-3 gap-4">
               <div>
-                <h3 className="font-bold text-blue-600 mb-2">Size Matters</h3>
+                <h3 className="font-bold text-orange-600 mb-2">Size Matters</h3>
                 <p className="text-sm text-gray-600">Carry-on (22") for short trips, checked (26-28") for longer journeys. Check airline restrictions.</p>
               </div>
               <div>
-                <h3 className="font-bold text-blue-600 mb-2">Hard vs Soft</h3>
+                <h3 className="font-bold text-orange-600 mb-2">Hard vs Soft</h3>
                 <p className="text-sm text-gray-600">Hardside protects fragiles better. Softside is lighter and more flexible for packing.</p>
               </div>
               <div>
-                <h3 className="font-bold text-blue-600 mb-2">Wheel Type</h3>
+                <h3 className="font-bold text-orange-600 mb-2">Wheel Type</h3>
                 <p className="text-sm text-gray-600">Spinner wheels (4-wheel) rotate 360°. Inline wheels (2-wheel) are more stable on uneven surfaces.</p>
               </div>
             </div>
@@ -150,7 +150,7 @@ export default function LuggagePage() {
                   </ul>
 
                   <div className="flex items-center justify-between mb-4">
-                    <div className="text-3xl font-bold text-blue-600">
+                    <div className="text-3xl font-bold text-orange-600">
                       ${product.price}
                     </div>
                   </div>

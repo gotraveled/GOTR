@@ -113,14 +113,14 @@ export default function StorePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 text-white py-16">
+      <section className="bg-gradient-to-br from-orange-600 via-orange-500 to-purple-700 text-white py-16">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center">
             <FaShoppingCart className="text-6xl mx-auto mb-6" />
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Travel Store
             </h1>
-            <p className="text-xl mb-8 text-blue-100">
+            <p className="text-xl mb-8 text-orange-100">
               Curated selection of the best travel gear, luggage, and accessories
             </p>
             <div className="flex items-center justify-center space-x-4 text-sm">
@@ -128,9 +128,9 @@ export default function StorePage() {
                 <FaAmazon className="text-2xl" />
                 <span>Amazon Prices</span>
               </div>
-              <span className="text-blue-300">•</span>
+              <span className="text-orange-300">•</span>
               <div>⭐ Top Rated Products</div>
-              <span className="text-blue-300">•</span>
+              <span className="text-orange-300">•</span>
               <div>🚚 Fast Shipping</div>
             </div>
           </div>
@@ -183,7 +183,7 @@ export default function StorePage() {
                 </div>
                 
                 <div className="p-4">
-                  <div className="text-xs text-blue-600 font-semibold mb-1">{product.category}</div>
+                  <div className="text-xs text-orange-600 font-semibold mb-1">{product.category}</div>
                   <h3 className="font-bold text-sm text-gray-800 mb-2 line-clamp-2 min-h-[2.5rem]">{product.name}</h3>
                   
                   <div className="flex items-center space-x-1 mb-3">
@@ -205,7 +205,7 @@ export default function StorePage() {
                   </ul>
 
                   <div className="flex items-center justify-between mb-3">
-                    <div className="text-2xl font-bold text-blue-600">
+                    <div className="text-2xl font-bold text-orange-600">
                       ${product.price}
                     </div>
                   </div>
@@ -266,17 +266,17 @@ export default function StorePage() {
       </section>
 
       {/* Travel Tips CTA */}
-      <section className="py-16 bg-blue-600 text-white">
+      <section className="py-16 bg-orange-600 text-white">
         <div className="container-custom text-center">
           <h2 className="text-3xl font-bold mb-4">Need Help Choosing?</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
             Check out our comprehensive travel gear guides and packing lists to find exactly what you need for your trip.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link href="/blog" className="bg-white text-blue-600 font-bold py-3 px-8 rounded-lg hover:shadow-xl transform hover:scale-105 transition-all">
+            <Link href="/blog" className="bg-white text-orange-600 font-bold py-3 px-8 rounded-lg hover:shadow-xl transform hover:scale-105 transition-all">
               Travel Guides
             </Link>
-            <Link href="/blog" className="bg-blue-700 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-800 transform hover:scale-105 transition-all">
+            <Link href="/blog" className="bg-orange-700 text-white font-bold py-3 px-8 rounded-lg hover:bg-orange-800 transform hover:scale-105 transition-all">
               Packing Lists
             </Link>
           </div>
